@@ -3,6 +3,7 @@ class CreateTests < ActiveRecord::Migration[6.0]
     create_table :tests do |t|
       t.string :title
       t.integer :level
+      t.boolean :published
 
       t.timestamps
     end

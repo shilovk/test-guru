@@ -1,0 +1,2 @@
+class AddNameEmailPasswordToUser < ApplicationRecord
+end

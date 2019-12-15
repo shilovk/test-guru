@@ -1,0 +1,2 @@
+class AddBodyToAnswer < ApplicationRecord
+end

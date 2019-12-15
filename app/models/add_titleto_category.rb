@@ -1,0 +1,2 @@
+class AddTitletoCategory < ApplicationRecord
+end
