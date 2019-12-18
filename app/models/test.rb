@@ -1,5 +1,5 @@
 class Test < ApplicationRecord
   def self.titles_of_category(title)
-    Test.where(category_id: title).pluck(:title).sort
+    Category.find_by(title: title).tests.pluck(:title).sort
   end
 end
