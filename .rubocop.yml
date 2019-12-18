@@ -75,12 +75,12 @@ AllCops:
   # from the lock file.) If the Ruby version is still unresolved, RuboCop will
   # use the oldest officially supported Ruby version (currently Ruby 2.3).
   TargetRubyVersion: ~
-
+ 
 Style/Documentation:
   Enabled: false
 
 Metrics/LineLength:
-  Enabled: false
+  Max: 120
 
 Style/ClassVars:
   Enabled: false
