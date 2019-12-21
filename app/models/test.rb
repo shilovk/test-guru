@@ -3,7 +3,7 @@ class Test < ApplicationRecord
   has_many :results, dependent: :destroy
   has_many :users, through: :results
   belongs_to :category
-  belongs_to :user
+  belongs_to :user, inverse_of: :tests
 
   def self.titles_by_category(title)
     joins('JOIN categories ON tests.category_id = categories.id')
