@@ -54,4 +54,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rubocop-rails'
 
-gem "rack", ">= 2.0.8"
+gem 'rack', '>= 2.0.8'
