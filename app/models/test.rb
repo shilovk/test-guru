@@ -6,6 +6,6 @@ class Test < ApplicationRecord
   has_many :users, through: :results
 
   def self.titles_by_category(title)
-    joins(:categories).where(categories: { title: title })
+    joins(:category).where(categories: { title: title })
   end
 end
