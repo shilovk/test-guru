@@ -27,10 +27,10 @@ answers_array = questions.each_with_object([]) do |question, memo|
 end
 pp Answer.create!(answers_array)
 
-results_array = users.each_with_object([]) do |user, memo|
+tests_users_array = users.each_with_object([]) do |user, memo|
   tests.each do |test|
     memo << { value: rand(1..2), test_id: test.id, user_id: user.id }
   end
 end
-pp Result.create!(results_array)
+pp TestUser.create!(tests_users_array)
 # rubocop:enable all
