@@ -1,3 +1,4 @@
+# rubocop:disable all
 users_array = []
 users_array << { name: 'Adm', email: 'admin@admin.ru', password: 'adm', admin: true }
 users_array << { name: 'Tom', email: 'tom@tom.ru', password: 'tom' }
@@ -32,3 +33,4 @@ results_array = users.each_with_object([]) do |user, memo|
   end
 end
 pp Result.create!(results_array)
+# rubocop:enable all
