@@ -8,7 +8,7 @@ class Test < ApplicationRecord
   scope :easy, -> { where(level: 0..1) }
   scope :normal, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
-  scope :titles_by_category_title, ->(title) { joins(:category).where(categories: { title: title }) }
+  scope :titles_by_category_title, ->(title) { joins(:category).where(categories: { title: title }).order(title: :desc).pluck(:title) }
 
   validates :title, presence: true
   validates :level, numericality: { only_integer: true }
