@@ -5,22 +5,16 @@ class Test < ApplicationRecord
   has_many :test_users, dependent: :destroy
   has_many :users, through: :test_users
 
+  validates :title, presence: true
+  validates :level, numericality: { only_integer: true, greater_than: 0 }
+  validates :title, uniqueness: { scope: :level, case_sensitive: false, message: 'with this level is already exists' }
+
   scope :easy, -> { where(level: 0..1) }
   scope :normal, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
-  scope :titles_by_category_title, ->(title) { joins(:category).where(categories: { title: title }).order(title: :desc).pluck(:title) }
+  scope :find_by_category_title, ->(title) { joins(:category).where(categories: { title: title }).order(title: :desc) }
 
-  validates :title, presence: true
-  validates :level, numericality: { only_integer: true }
-  validate :validate_unique_title_level, on: :create
-  validate :validate_unique_title_level, on: :update
-
-  def validate_unique_title_level
-    record = Test.find_by(title: title, level: level)
-    return unless record
-
-    errors.add("The test with id=#{record.id} is already present with the fields:")
-    errors.add(:title, title)
-    errors.add(:level, level)
+  def self.array_of_titles_by_category_title(title)
+    find_by_category_title(title).pluck(:title)
   end
 end
