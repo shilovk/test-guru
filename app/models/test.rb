@@ -12,9 +12,9 @@ class Test < ApplicationRecord
   scope :easy, -> { where(level: 0..1) }
   scope :normal, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
-  scope :find_by_category_title, ->(title) { joins(:category).where(categories: { title: title }).order(title: :desc) }
+  scope :find_with_category_title, ->(title) { joins(:category).where(categories: { title: title }).order(title: :desc) }
 
   def self.array_of_titles_by_category_title(title)
-    find_by(category_title: title).pluck(:title)
+    find_with_category_title(title).pluck(:title)
   end
 end
