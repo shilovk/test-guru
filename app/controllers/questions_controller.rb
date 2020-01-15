@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :find_test, only: %i[index show create]
+  before_action :find_test, only: %i[index show create destroy]
   before_action :find_question, only: %i[show destroy]
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
@@ -12,14 +12,13 @@ class QuestionsController < ApplicationController
     render plain: @questions.inspect
   end
 
+  def show
+  end
+
   def create
     question = Question.create(question_params)
 
     render plain: question.inspect
-  end
-
-  def show
-    render plain: @question.inspect
   end
 
   def destroy
