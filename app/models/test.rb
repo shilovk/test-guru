@@ -15,6 +15,6 @@ class Test < ApplicationRecord
   scope :find_by_category_title, ->(title) { joins(:category).where(categories: { title: title }).order(title: :desc) }
 
   def self.array_of_titles_by_category_title(title)
-    find_by_category_title(title).pluck(:title)
+    find_by(category_title: title).pluck(:title)
   end
 end

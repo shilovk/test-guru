@@ -1,9 +1,9 @@
 class QuestionsController < ApplicationController
   before_action :find_test, only: %i[index show create]
-  before_action :find_question, only: %i[show delete]
+  before_action :find_question, only: %i[show destroy]
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    exception.model == 'Question' ? rescue_with_question_not_found(exception.id)  : raise
+    exception.model == 'Question' ? rescue_with_question_not_found(exception.id) : raise
   end
 
   def index
