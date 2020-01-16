@@ -1,7 +1,7 @@
 module QuestionsHelper
   def question_header
-    title = @question.present? ? 'Create New' : 'Edit'
-    title + "#{@test.title} Question"
+    title = @question.persisted? ? 'Edit' : 'Create New'
+    title + "#{@question.test.title} Question"
   end
 
   def question_form_url
