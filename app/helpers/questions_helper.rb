@@ -3,4 +3,8 @@ module QuestionsHelper
     title = @question.present? ? 'Create New' : 'Edit'
     title + "#{@test.title} Question"
   end
+
+  def question_form_url
+    @question.persisted? ? [@question] : [@test, @question]
+  end
 end
