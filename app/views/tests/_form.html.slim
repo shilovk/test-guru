@@ -13,6 +13,6 @@ h1= test_header(@test)
 
   p
     = form.label :category_id
-    = form.number_field :category_id, id: :test_category_id
+    = form.collection_select :category_id, Category.all, :id, :title, prompt: true, id:  :test_category_id
 
   = form.submit
