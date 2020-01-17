@@ -1,0 +1,18 @@
+h1 Show Test
+
+p= "Title: #{@test.title}"
+p= "Level: #{@test.level}"
+p= "Category: #{@test.category.title}"
+
+h2 Questions:
+
+p= link_to 'New Question', new_test_question_path(@test)
+
+table
+  tr
+    th Body
+    th colspan='3' Actions
+
+  = render @test.questions
+
+p= link_to 'Back', tests_path

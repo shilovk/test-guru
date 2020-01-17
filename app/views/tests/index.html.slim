@@ -1,0 +1,14 @@
+- if @tests.present?
+  h1 Tests
+
+  p = link_to 'New Test', new_test_path
+
+  table
+    tr
+      th Title
+      th Level
+      th Category
+      th colspan='3' Actions
+    = render @tests
+- else
+ p You have not tests
