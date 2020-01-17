@@ -1,5 +1,6 @@
-module TestsHelper
+# frozen_string_literal: true
 
+module TestsHelper
   TEST_LEVELS = { 0 => :easy, 1 => :normal, 3 => :hard }.freeze
 
   def test_level(test)
