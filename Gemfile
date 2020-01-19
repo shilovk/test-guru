@@ -58,4 +58,4 @@ gem 'rack', '>= 2.0.8'
 
 gem 'rails-i18n'
 
-gem 'slim'
+gem 'slim-rails'
