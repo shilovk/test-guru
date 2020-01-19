@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :find_test, only: %i[index show create destroy]
-  before_action :find_question, only: %i[show destroy]
+  before_action :find_test, only: %i[index new create]
+  before_action :find_question, only: %i[show edit update destroy]
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
     exception.model == 'Question' ? rescue_with_question_not_found(exception.id) : raise
@@ -8,22 +8,38 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = @test.questions
+  end
 
-    render plain: @questions.inspect
+  def new
+    @question = @test.questions.new
+  end
+
+  def create
+    @question = @test.questions.new(question_params)
+
+    if @question.save
+      redirect_to @question
+    else
+      render :new
+    end
   end
 
   def show; end
 
-  def create
-    question = Question.create(question_params)
+  def edit; end
 
-    render plain: question.inspect
+  def update
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render :edit
+    end
   end
 
   def destroy
     @question.destroy
 
-    redirect_to test_questions_path, notice: 'Question was successfuly deleted'
+    redirect_to @question.test, notice: 'Question was successfuly deleted'
   end
 
   private
