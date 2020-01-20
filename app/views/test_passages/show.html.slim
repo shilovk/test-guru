@@ -1,5 +1,7 @@
 h1= "Passing the #{@test_passage.test.title} Test"
 
+p= question_numbers(@test_passage)
+
 b= @test_passage.current_question.body
 
 = form_with url: test_passage_path(@test_passage), local: true, method: :put, include_hidden: false do |form|
