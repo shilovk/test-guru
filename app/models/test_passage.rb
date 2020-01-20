@@ -16,8 +16,16 @@ class TestPassage < ApplicationRecord
     current_question.nil?
   end
 
+  def questions_count
+    test.questions.count
+  end
+
   def current_question_number
-    test.questions.count - next_questions.count
+    questions_count - next_questions.count
+  end
+
+  def result_percent
+    correct_questions * 100 / questions_count
   end
 
   private
@@ -41,6 +49,4 @@ class TestPassage < ApplicationRecord
   def next_question
     self.current_question = next_questions.first
   end
-
-
 end
