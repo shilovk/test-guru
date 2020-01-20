@@ -7,6 +7,6 @@ class Answer < ApplicationRecord
   scope :correct, -> { where(correct: true) }
 
   def validate_max_answers_for_question
-    # errors.add(:question, 'have already enough answers(1..4)') if self.question.answers.count >= 4
+    errors.add(:question, 'have already enough answers(1..4)') if question.answers.count >= 4
   end
 end
