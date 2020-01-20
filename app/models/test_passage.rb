@@ -5,8 +5,6 @@ class TestPassage < ApplicationRecord
 
   before_validation :before_validation_set_first_question, on: :create
 
-  before_update :next_question
-
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids)
     save!
@@ -30,12 +28,14 @@ class TestPassage < ApplicationRecord
 
   private
 
-  def before_validation_set_first_question
-    self.current_question = test.questions.first if test.present?
+  def before_validation_set_current_question
+    self.current_question = next_question if test.present?
+
+    # self.current_question = test.questions.first if test.present?
   end
 
   def correct_answer?(answer_ids)
-    correct_answers.ids.sort == answer_ids.map(&:to_i).sort
+    correct_answers.ids.sort == answer_ids.map(&:to_i).sort || false
   end
 
   def correct_answers
@@ -43,7 +43,8 @@ class TestPassage < ApplicationRecord
   end
 
   def next_questions
-    test.questions.where('id > ?', current_question.id)
+    next_questions = test.questions
+    next_questions.where('id > ?', current_question.id) if current_question.present?
   end
 
   def next_question
