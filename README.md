@@ -10,4 +10,4 @@ List of entities (real-world objects) for the TestGuru project:
 
 * Answer
 
-* TestUser
+* TestPassage
