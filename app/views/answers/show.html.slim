@@ -1,0 +1,15 @@
+h1 Question
+
+p
+  b Body:
+  = @answer.question.body
+
+p
+  b Answer:
+  = @answer.body
+
+p
+  b Correct:
+  = @answer.correct
+
+p= link_to 'Back', question_path(@answer.question)

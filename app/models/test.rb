@@ -1,9 +1,9 @@
 class Test < ApplicationRecord
+  has_many :questions, -> { order(:id) }, dependent: :destroy
+  has_many :test_passages, dependent: :destroy
+  has_many :users, through: :test_passages
   belongs_to :category, optional: true
   belongs_to :author, class_name: 'User', inverse_of: :created_tests, optional: true
-  has_many :questions, dependent: :destroy
-  has_many :test_users, dependent: :destroy
-  has_many :users, through: :test_users
 
   validates :title, presence: true
   validates :level, numericality: { only_integer: true, greater_than: 0 }
