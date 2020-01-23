@@ -10,17 +10,10 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      <p class= "nav user">
-        Welcome, <b><%= current_user.email %></b> Guru
-        <br/>
-        <%= link_to 'Logout', logout_path %>
-      </p>
-    <% end %>
-    <p><%= link_to 'All Tests', root_path unless current_page?(root_url) %></p>
+    <%= render 'shared/header' %>
 
     <%= yield %>
 
-    <%= render 'shared/footer'%>
+    <%= render 'shared/footer' %>
   </body>
 </html>
