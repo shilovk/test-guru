@@ -4,14 +4,14 @@ class ApplicationController < ActionController::Base
   helper_method :current_user,
                 :logged_in?
 
+  before_action :authenticate_user!
+
   private
 
   def authenticate_user!
     unless current_user
       redirect_to login_path, alert: 'Verify your Email and Password'
     end
-    
-    cookies[:email] = current_user&.email
   end
 
   def current_user
