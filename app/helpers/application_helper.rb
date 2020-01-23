@@ -10,7 +10,7 @@ module ApplicationHelper
   def show_flash(flash)
     content_tag :p do
       flash.each do |message, type|
-        concat(content_tag :p, type, class: "flash #{message}")
+        concat(content_tag(:p, type, class: "flash #{message}"))
       end
     end
   end
