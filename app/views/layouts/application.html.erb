@@ -10,8 +10,10 @@
   </head>
 
   <body>
-    <p><%= link_to 'All Tests', root_path unless current_page?(root_url) %></p>
+    <%= render 'shared/header' %>
+
     <%= yield %>
-    <%= render 'shared/footer'%>
+
+    <%= render 'shared/footer' %>
   </body>
 </html>

@@ -1,0 +1,8 @@
+h1= link_to 'TestGuru', root_path unless current_page?(root_url)
+
+p.nav.user
+  - if logged_in?
+    = "Welcome, <b>#{current_user.email}</b> Guru".html_safe
+    br= link_to 'Logout', logout_path
+  - else
+    = link_to 'Login', login_path
