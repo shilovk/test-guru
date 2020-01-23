@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: :create
 
   get :login, to: 'sessions#new'
-  get :logout, to: 'sessions#destroy'
+  get :logout, to: 'sessions#delete'
   resources :sessions, only: :create
 
   resources :tests do
