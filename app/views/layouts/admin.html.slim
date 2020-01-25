@@ -2,14 +2,14 @@ doctype html
 html
   head
     title
-      | TestGuru
+      | Admin Panel \| TestGuru
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     
   body
-    = render 'shared/header'
+    = render 'admin/nav'
     = show_flash(flash)
 
     = yield

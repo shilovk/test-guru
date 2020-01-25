@@ -1,6 +1,6 @@
 h1= test_header(@test)
 
-= form_with model: @test, local: true do |form|
+= form_with model: [:admin, @test], local: true do |form|
   = render 'shared/errors', resource: @test
 
   p
@@ -16,3 +16,5 @@ h1= test_header(@test)
     = form.collection_select :category_id, Category.all, :id, :title, prompt: true, id:  :test_category_id
 
   = form.submit
+
+= link_to 'Back', admin_tests_path
