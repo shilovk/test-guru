@@ -8,14 +8,14 @@ p= "Author: #{@test.author&.email}"
 
 h2 Questions:
 
-p= link_to 'New Question', new_test_question_path(@test)
+p= link_to 'New Question', new_admin_test_question_path(@test)
 
 table
   tr
     th Body
     th colspan='3' Actions
 
-  = render partial: 'questions/question', collection: @test.questions
+  = render partial: 'admin/questions/question', collection: @test.questions
 
 p
   => link_to 'Edit', edit_admin_test_path(@test)

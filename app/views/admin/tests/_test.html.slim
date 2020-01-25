@@ -7,6 +7,6 @@ tr
   td= link_to 'Show', admin_test_path(test)
   td= link_to 'Edit', edit_admin_test_path(test)
   td= link_to 'Delete',
-              test,
+              admin_test_path(test),
               method: :delete,
               data: { confirm: 'Are you sure?' }
