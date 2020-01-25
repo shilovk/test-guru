@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::TestsController < Admin::BaseController 
+class Admin::TestsController < Admin::BaseController
   before_action :set_test, only: %i[show edit update destroy start]
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
@@ -17,9 +17,10 @@ class Admin::TestsController < Admin::BaseController
 
   def create
     @test = Test.new(test_params)
+    @test.author = current_user
 
     if @test.save
-      redirect_to @test
+      redirect_to admin_test_path(@test)
     else
       render :new
     end
@@ -31,7 +32,7 @@ class Admin::TestsController < Admin::BaseController
 
   def update
     if @test.update(test_params)
-      redirect_to @test
+      redirect_to admin_test_path(@test)
     else
       render :edit
     end
@@ -40,7 +41,7 @@ class Admin::TestsController < Admin::BaseController
   def destroy
     @test.destroy
 
-    redirect_to tests_path, notice: 'Test was been successfuly deleted'
+    redirect_to admin_tests_path, notice: 'Test was been successfuly deleted'
   end
 
   def start
@@ -59,6 +60,6 @@ class Admin::TestsController < Admin::BaseController
   end
 
   def test_params
-    params.require(:test).permit(:title, :level, :category_id)
+    params.require(:test).permit(:title, :level, :category_id, :author_id)
   end
 end

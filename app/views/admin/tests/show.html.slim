@@ -3,6 +3,8 @@ h1 Show Test
 p= "Title: #{@test.title}"
 p= "Level: #{test_level(@test)}"
 p= "Category: #{@test.category.title}"
+p= "Author: #{@test.author&.email}"
+
 
 h2 Questions:
 
@@ -16,6 +18,6 @@ table
   = render partial: 'questions/question', collection: @test.questions
 
 p
-  => link_to 'Edit', edit_test_path(@test)
+  => link_to 'Edit', edit_admin_test_path(@test)
   '|
   =< link_to 'Back', admin_tests_path

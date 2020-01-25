@@ -3,6 +3,7 @@ tr
   td= test_level(test)
   td= test.category.title
   td= test.questions.count
+  td= test.author&.email
   td= link_to 'Show', admin_test_path(test)
   td= link_to 'Edit', edit_admin_test_path(test)
   td= link_to 'Delete',
