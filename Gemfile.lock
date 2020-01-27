@@ -251,17 +251,17 @@ DEPENDENCIES
   capybara (>= 2.15)
   devise (~> 4.7.1)
   jbuilder (~> 2.7)
-  letter_opener
+  letter_opener (~> 1.7.0)
   listen (>= 3.0.5, < 3.2)
   pg
   puma (~> 4.1)
   rack (>= 2.0.8)
   rails (~> 6.0.2.1)
-  rails-i18n
+  rails-i18n (~> 6.0.0)
   rubocop-rails
   sass-rails (>= 6)
   selenium-webdriver
-  slim-rails
+  slim-rails (~> 3.2.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
