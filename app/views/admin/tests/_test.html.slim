@@ -4,9 +4,9 @@ tr
   td= test.category.title
   td= test.questions.count
   td= test.author&.email
-  td= link_to 'Show', admin_test_path(test)
-  td= link_to 'Edit', edit_admin_test_path(test)
-  td= link_to 'Delete',
+  td= link_to t('links.show'), admin_test_path(test)
+  td= link_to t('links.edit'), edit_admin_test_path(test)
+  td= link_to t('links.delete.title'),
               admin_test_path(test),
               method: :delete,
-              data: { confirm: 'Are you sure?' }
+              data: { confirm: t('links.delete.confirm') }

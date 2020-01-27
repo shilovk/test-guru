@@ -1,7 +1,66 @@
 en:
   hello: "Hello world"
 
+  helpers:
+    submit:
+      test:
+        create: "Create Test"
+        update: "Update Tests"
+    label:
+      test:
+        title: "Title"
+        level: "Level"
+        category_id: "Category"
+    select:
+      prompt: "Select"
+
+  shared:
+    errors:
+      header:
+        one: "%{count} error detected"
+        other: "%{count} errors detected"
+
+  links:
+    back: 'Back'
+    show: 'Show'
+    edit: 'Edit'
+    delete:
+        title: 'Delete'
+        confirm: 'Are you sure?'
+
+  tests:
+    test:
+      start: 'Start'
+    index:
+      header: "Available Tests"
+      actions: "Actions"
+      not_records: "Not created Tests"
+
+  test_passages:
+    result:
+      header: "Test %{title} was Completed!"
+
   admin:
     tests:
       index:
-        header: "Tricky Tests"
+        header: "Available Tests"
+        new: "Create Test"
+        actions: "Actions"
+        not_records: "Not created Tests"
+      show:
+        header: "Show Test"
+        new: "Create Question"
+        questions: "Questions"
+        actions: "Actions"
+      new:
+        header: "Create Test"
+      create:
+        success: "Test was successfuly created."
+      edit:
+        header: "Editiing Test"
+      delete:
+        success: "Test was been successfuly deleted."
+
+  tests_mailer:
+    completed_test:
+      subject: "You just completed the TestGuru test!"

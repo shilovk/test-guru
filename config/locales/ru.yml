@@ -24,10 +24,19 @@ ru:
 
   links:
     back: 'Назад'
+    show: 'Просмотр'
+    edit: 'Редактировать'
+    delete:
+        title: 'Удалить'
+        confirm: 'Вы уверены?'
 
   tests:
+    test:
+      start: 'Старт'
     index:
       header: "Доступные Тесты"
+      actions: "Действия"
+      not_records: "Нет созданных Тестов"
 
   test_passages:
     result:
@@ -37,12 +46,22 @@ ru:
     tests:
       index:
         header: "Доступные Тесты"
+        new: "Создать тест"
+        actions: "Действия"
+        not_records: "Нет созданных Тестов"
+      show:
+        header: "Просмотр Теста"
+        new: "Создать Вопрос"
+        questions: "Вопросы"
+        actions: "Действия"
       new:
         header: "Создание Теста"
       create:
         success: "Тест успешно создан."
       edit:
         header: "Редактирование Теста"
+      delete:
+        success: "Тест успешно удален. Test was been successfuly deleted."
 
   tests_mailer:
     completed_test:
