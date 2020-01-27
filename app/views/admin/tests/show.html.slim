@@ -1,0 +1,23 @@
+h1 Show Test
+
+p= "Title: #{@test.title}"
+p= "Level: #{test_level(@test)}"
+p= "Category: #{@test.category.title}"
+p= "Author: #{@test.author&.email}"
+
+
+h2 Questions:
+
+p= link_to 'New Question', new_admin_test_question_path(@test)
+
+table
+  tr
+    th Body
+    th colspan='3' Actions
+
+  = render partial: 'admin/questions/question', collection: @test.questions
+
+p
+  => link_to 'Edit', edit_admin_test_path(@test)
+  '|
+  =< link_to 'Back', admin_tests_path

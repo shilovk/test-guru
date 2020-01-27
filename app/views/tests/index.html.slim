@@ -1,14 +1,13 @@
 - if @tests.present?
   h1 Tests
 
-  p = link_to 'New Test', new_test_path
-
   table
     tr
       th Title
       th Level
       th Category
-      th colspan='4' Actions
+      th Questions
+      th Actions
     = render @tests
 - else
- p You have not tests
+ p You have not Tests
