@@ -1,6 +1,6 @@
-/*jshint esversion: 6 */
+// jshint esversion: 6
 
-const { environment } = require('@rails/webpacker')
+const { environment } = require('@rails/webpacker');
 
 const webpack = require('webpack')
 environment.plugins.append('Provide',
@@ -9,6 +9,6 @@ environment.plugins.append('Provide',
     jQuery: 'jquery',
     Popper: ['popper.js', 'default']
   })
-)
+);
 
 module.exports = environment
