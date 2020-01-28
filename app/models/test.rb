@@ -5,7 +5,7 @@ class Test < ApplicationRecord
   belongs_to :category, optional: true
   belongs_to :author, class_name: 'User', inverse_of: :created_tests, optional: true
 
-  validates :title, presence: true
+  validates :title, :category_id, presence: true
   validates :level, numericality: { only_integer: true, greater_than: 0 }
   validates :title, uniqueness: { scope: :level, case_sensitive: false, message: 'with this level is already exists' }
 

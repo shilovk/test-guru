@@ -1,13 +1,13 @@
 - if @tests.present?
-  h1 Tests
+  h1= t('.header')
 
   table
     tr
-      th Title
-      th Level
-      th Category
-      th Questions
-      th Actions
+      th= Test.human_attribute_name(:title)
+      th= Test.human_attribute_name(:level)
+      th= Test.human_attribute_name(:category_id)
+      th= Test.human_attribute_name(:question_ids)
+      th= t('.actions')
     = render @tests
 - else
- p You have not Tests
+  p= t('.not_records')
