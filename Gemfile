@@ -33,6 +33,7 @@ gem 'slim-rails', '~> 3.2.0'
 # UI
 
 gem 'bootstrap', '~> 4.4.1'
+gem 'foreman'
 gem 'jquery-rails'
 
 # Use Active Storage variant
