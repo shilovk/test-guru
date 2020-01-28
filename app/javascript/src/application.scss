@@ -1,4 +1,6 @@
-// Custom bootstrap variables must be set or imported *before* bootstrap.
-@import "~bootstrap/scss/bootstrap";
-@import "./custom";
-@import "stylesheets/home";
+@import "stylesheets/custom";
+@import "custom";
+
+@import "bootstrap_custom";
+
+@import "custom_with_boostrap";
