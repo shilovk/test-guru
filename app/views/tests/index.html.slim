@@ -1,13 +1,14 @@
 - if @tests.present?
   h1= t('.header')
 
-  table
-    tr
-      th= Test.human_attribute_name(:title)
-      th= Test.human_attribute_name(:level)
-      th= Test.human_attribute_name(:category_id)
-      th= Test.human_attribute_name(:question_ids)
-      th= t('.actions')
-    = render @tests
+  table.table.table-sm.table-striped
+    thead
+      tr
+        th scope="col"= Test.human_attribute_name(:title)
+        th scope="col"= Test.human_attribute_name(:level)
+        th scope="col"= Test.human_attribute_name(:category_id)
+        th scope="col"= Test.human_attribute_name(:question_ids)
+        th scope="col"= t('.actions')
+    tbody= render @tests
 - else
-  p= t('.not_records')
+  .alert.alert-warning role="alert"= t('.not_records')
