@@ -32,8 +32,8 @@ gem 'slim-rails', '~> 3.2.0'
 
 # UI
 
-gem 'jquery-rails'
 gem 'bootstrap', '~> 4.4.1'
+gem 'jquery-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
