@@ -25,7 +25,7 @@ module ApplicationHelper
             (
               message +
               button_tag(type: 'button', class: 'close', 'data-dismiss': 'alert', 'aria-label': 'Close') do
-                content_tag(:span, "&times;".html_safe, 'aria-hidden': 'true')
+                content_tag(:span, '&times;'.html_safe, 'aria-hidden': 'true')
               end
             ).html_safe,
             class: "alert #{flash_class(type.to_sym)} alert-dismissible fade show",
