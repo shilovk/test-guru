@@ -1,16 +1,18 @@
-- if @tests.present?
-  h1= t('.header')
+.row
+  .col
+    - if @tests.present?
+      h1= t('.header')
 
-  p= link_to t('.new'), new_admin_test_path
+      p= link_to t('.new'), new_admin_test_path
 
-  table
-    tr
-      th= Test.human_attribute_name(:title)
-      th= Test.human_attribute_name(:level)
-      th= Test.human_attribute_name(:category_id)
-      th= Test.human_attribute_name(:question_ids)
-      th= Test.human_attribute_name(:author_id)
-      th colspan='3'= t('.actions')
-    = render @tests
-- else
- p= t('.not_records')
+      table
+        tr
+          th= Test.human_attribute_name(:title)
+          th= Test.human_attribute_name(:level)
+          th= Test.human_attribute_name(:category_id)
+          th= Test.human_attribute_name(:question_ids)
+          th= Test.human_attribute_name(:author_id)
+          th colspan='3'= t('.actions')
+        = render @tests
+    - else
+     p= t('.not_records')
