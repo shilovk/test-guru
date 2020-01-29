@@ -39,6 +39,9 @@ en:
   test_passages:
     result:
       header: "Test %{title} was Completed!"
+    gist:
+      success: "Gist was successfully created!"
+      failure: "An error occurred while saving gist"
 
   admin:
     tests:
@@ -55,11 +58,11 @@ en:
       new:
         header: "Create Test"
       create:
-        success: "Test was successfuly created."
+        success: "Test was successfully created."
       edit:
         header: "Editiing Test"
       delete:
-        success: "Test was been successfuly deleted."
+        success: "Test was been successfully deleted."
 
   tests_mailer:
     completed_test:
