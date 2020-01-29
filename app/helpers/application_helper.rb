@@ -11,9 +11,18 @@ module ApplicationHelper
     {
       notice: 'alert-info',
       success: 'alert-success',
-      error: 'alert alert-danger',
-      alert: 'alert alert-warning'
-    }[type]
+      error: 'alert-danger',
+      alert: 'alert-warning'
+    }[type.to_sym]
+  end
+
+  def text_with_button(text, type = 'close', icon = '&times')
+    (
+      text +
+      button_tag(type: 'button', class: type, 'data-dismiss': 'alert', 'aria-label': type) do
+        content_tag(:span, icon.try(:html_safe), 'aria-hidden': 'true')
+      end
+    ).try(:html_safe)
   end
 
   def show_flash(flash)
@@ -21,15 +30,8 @@ module ApplicationHelper
       flash.each do |type, message|
         concat(
           content_tag(
-            :div,
-            (
-              message +
-              button_tag(type: 'button', class: 'close', 'data-dismiss': 'alert', 'aria-label': 'Close') do
-                content_tag(:span, '&times;'.html_safe, 'aria-hidden': 'true')
-              end
-            ).html_safe,
-            class: "alert #{flash_class(type.to_sym)} alert-dismissible fade show",
-            role: 'alert'
+            :div, text_with_button(message),
+            class: "alert #{flash_class(type)} alert-dismissible fade show", role: 'alert'
           )
         )
       end
