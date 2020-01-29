@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# GistQuestionService
 class GistQuestionService
   def initialize(question, client: nil)
     @question = question

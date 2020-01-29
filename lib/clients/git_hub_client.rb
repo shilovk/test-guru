@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
+# GistQuestionService
 class GitHubClient
   ROOT_ENDPOINT = 'https://api.github.com'
-  ACCESS_TOKEN = ''
+  ACCESS_TOKEN = 'fbb77206a3523661dd29ae7928251e69ebf4a519'
 
   def initialize
     @http_client = setup_http_client
