@@ -1,12 +1,12 @@
 tr
-  td= test.title
+  th scope="row"= test.title
   td= test_level(test)
   td= test.category.title
   td= test.questions.count
   td= test.author&.email
-  td= link_to t('links.show'), admin_test_path(test)
-  td= link_to t('links.edit'), edit_admin_test_path(test)
+  td= link_to t('links.show'), admin_test_path(test), class: 'btn btn-outline-info btn-sm'
+  td= link_to t('links.edit'), edit_admin_test_path(test), class: 'btn btn-outline-secondary btn-sm'
   td= link_to t('links.delete.title'),
               admin_test_path(test),
               method: :delete,
-              data: { confirm: t('links.delete.confirm') }
+              data: { confirm: t('links.delete.confirm') }, class: 'btn btn-outline-danger btn-sm'
