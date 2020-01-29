@@ -8,12 +8,12 @@ module ApplicationHelper
   end
 
   def flash_class(type)
-    case type
-    when :notice then 'alert alert-info'
-    when :success then 'alert alert-success'
-    when :error then 'alert alert-danger'
-    when :alert then 'alert alert-warning'
-    end
+    {
+      notice: 'alert-info',
+      success: 'alert-success',
+      error: 'alert alert-danger',
+      alert: 'alert alert-warning'
+    }[type]
   end
 
   def show_flash(flash)
