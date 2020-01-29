@@ -36,6 +36,8 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'foreman'
 gem 'jquery-rails'
 
+gem 'faraday', '~> 1.0.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
