@@ -3,7 +3,7 @@
 # GistQuestionService
 class GitHubClient
   ROOT_ENDPOINT = 'https://api.github.com'
-  ACCESS_TOKEN = 'fbb77206a3523661dd29ae7928251e69ebf4a519'
+  ACCESS_TOKEN = ''
 
   def initialize
     @http_client = setup_http_client
