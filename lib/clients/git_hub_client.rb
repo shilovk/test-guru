@@ -1,25 +1,28 @@
 # frozen_string_literal: true
 
-# GistQuestionService
+# GitHubClient
 class GitHubClient
   ROOT_ENDPOINT = 'https://api.github.com'
-  ACCESS_TOKEN = ''
+  CLIENT_ID = ENV['GITHUB_CLIENT_ID']
+  CLIENT_SECRET = ENV['GITHUB_CLIENT_SECRET']
+  GIST_ACCESS_TOKEN = ENV['GIST_ACCESS_TOKEN']
 
   def initialize
-    @http_client = setup_http_client
+    @client = setup_client
   end
 
   def create_gist(params)
-    @http_client.post('gists') do |request|
-      request.headers['Authorization'] = "token #{ACCESS_TOKEN}"
-      request.headers['Content-Type'] = 'application/json'
-      request.body = params.to_json
-    end
+    @client.create_gist params
   end
 
   private
 
-  def setup_http_client
-    Faraday.new(url: ROOT_ENDPOINT)
+  def setup_client
+    Octokit::Client.new(:access_token => '8a15556b3537275b0eb130e2101d9427ca0d57ea')
+    # Octokit::Client.new \
+    #   access_token: "[#{GIST_ACCESS_TOKEN}]!"
+    # Octokit::Client.new \
+    #   client_id: CLIENT_ID,
+    #   client_secret: CLIENT_SECRET
   end
 end

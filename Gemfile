@@ -36,8 +36,6 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'foreman'
 gem 'jquery-rails'
 
-gem 'dotenv-rails', groups: [:development, :test]
-
 gem 'octokit', '~> 4.0'
 
 # Use Active Storage variant
@@ -49,6 +47,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'dotenv-rails'
 end
 
 group :development do

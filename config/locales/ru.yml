@@ -42,7 +42,7 @@ ru:
     result:
       header: "Тест %{title} успешно завершён!"
     gist:
-      success: "Gist успешно сохранён!"
+      success: "Gist успешно сохранён %{url}"
       failure: "Во время сохранения gist произошла ошибка"
 
   admin:
@@ -64,8 +64,8 @@ ru:
       edit:
         header: "Редактирование Теста"
       delete:
-        success: "Тест успешно удален. Test was been successfuly deleted."
+        success: "Тест успешно удален."
 
   tests_mailer:
     completed_test:
-      subject: "Вы успешно завершили тест на TestGuru! You just completed the TestGuru test!"
+      subject: "Вы успешно завершили тест на TestGuru!"
