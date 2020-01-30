@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def auto_format_text(text)
-    text = simple_format(text)
+    text ||= simple_format(text)
     text.gsub(URI::DEFAULT_PARSER.make_regexp, '<a href="\0" target= "_blank">\0</a>')
   end
 
