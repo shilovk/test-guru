@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-  default_scope { order(title: :asc) }
+  default_scope { order(created_at: :desc) }
 
   has_many :tests, dependent: :nullify
 

@@ -1,0 +1,15 @@
+.row
+  .col
+    - if @gists.present?
+      h2= t('.header')
+
+      table.table.table-sm.table-secondary
+        thead.thead-light
+          tr
+            th scope="col"= Gist.human_attribute_name(:question_id)
+            th scope="col"= Gist.human_attribute_name(:gist_id)
+            th scope="col"= Gist.human_attribute_name(:user_id)
+        tbody= render @gists
+
+    - else
+     .alert.alert-warning role="alert"= t('.not_records')

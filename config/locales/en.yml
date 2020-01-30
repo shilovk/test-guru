@@ -68,6 +68,11 @@ en:
       delete:
         success: "Test was been successfully deleted."
 
+    gists:
+      index:
+        header: "Created Gists"
+        not_records: "Not created Gists"
+
   tests_mailer:
     completed_test:
       subject: "You just completed the TestGuru test!"

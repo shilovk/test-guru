@@ -1,0 +1,4 @@
+tr
+  th scope="row"= link_to gist.question.body, admin_question_path(gist)
+  td= link_to gist.gist_id, gist.gist_url, target: '_blank'
+  td= gist.user&.email
