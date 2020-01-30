@@ -18,9 +18,7 @@ class GitHubClient
   private
 
   def setup_client
-    Octokit::Client.new(:access_token => '8a15556b3537275b0eb130e2101d9427ca0d57ea')
-    # Octokit::Client.new \
-    #   access_token: "[#{GIST_ACCESS_TOKEN}]!"
+    Octokit::Client.new access_token: GIST_ACCESS_TOKEN
     # Octokit::Client.new \
     #   client_id: CLIENT_ID,
     #   client_secret: CLIENT_SECRET
