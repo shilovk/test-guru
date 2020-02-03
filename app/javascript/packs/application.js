@@ -20,4 +20,5 @@ const imagePath = (name) => images(name, true)
 import "../src/application"
 
 import "./bootstrap_custom"
+require("./utilities/confirm")
 require("./utilities/sorting")
