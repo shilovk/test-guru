@@ -15,7 +15,7 @@ en:
       question:
         body: "Body"
       gist:
-        gist_id: "Gist"
+        url: "Gist"
         question_id: "Question"
         user_id: "User"
 

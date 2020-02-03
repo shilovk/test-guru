@@ -2,6 +2,14 @@
 
 # GistQuestionService
 class GistQuestionService
+  Result = Struct.new(:call) do
+    delegate :html_url, to: :call
+
+    def success?
+      call.html_url.present?
+    end
+  end
+
   def initialize(question, client = default_client)
     @question = question
     @test = @question.test
@@ -9,7 +17,7 @@ class GistQuestionService
   end
 
   def call
-    @client.create_gist(gist_params)
+    Result.new(@client.create_gist(gist_params))
   end
 
   private

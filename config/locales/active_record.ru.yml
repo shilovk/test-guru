@@ -15,7 +15,7 @@ ru:
       question:
         body: "Текст"
       gist:
-        gist_id: "Gist"
+        url: "Gist"
         question_id: "Вопрос"
         user_id: "Пользователь"
 

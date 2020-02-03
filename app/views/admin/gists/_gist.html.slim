@@ -1,4 +1,4 @@
 tr
-  th scope="row"= link_to gist.question.body[0..24], admin_question_path(gist)
-  td= link_to gist.gist_id, gist.gist_url, target: '_blank'
+  th scope="row"= link_to truncate(gist.question.body, length: 25, escape: false), admin_question_path(gist)
+  td= link_to gist.url, gist.url, target: '_blank'
   td= gist.user&.email
