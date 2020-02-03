@@ -3,6 +3,7 @@ en:
     models:
       test: "Test"
       question: "Question"
+      gist: "Gist"
 
     attributes:
       test:
@@ -13,6 +14,10 @@ en:
         author_id: "Author"
       question:
         body: "Body"
+      gist:
+        url: "Gist"
+        question_id: "Question"
+        user_id: "User"
 
     errors:
       messages:

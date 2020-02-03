@@ -16,12 +16,21 @@ module ApplicationHelper
     }[type.to_sym]
   end
 
+  def auto_format_text(text)
+    text ||= simple_format(text)
+    text.gsub(URI::DEFAULT_PARSER.make_regexp, '<a href="\0" target= "_blank">\0</a>')
+  end
+
+  def icon_button(type = 'close', icon = '&times')
+    button_tag(type: 'button', class: type, 'data-dismiss': 'alert', 'aria-label': type) do
+      content_tag(:span, icon.try(:html_safe), 'aria-hidden': 'true')
+    end
+  end
+
   def text_with_button(text, type = 'close', icon = '&times')
     (
-      text +
-      button_tag(type: 'button', class: type, 'data-dismiss': 'alert', 'aria-label': type) do
-        content_tag(:span, icon.try(:html_safe), 'aria-hidden': 'true')
-      end
+      auto_format_text(text) +
+      icon_button(type, icon)
     ).try(:html_safe)
   end
 

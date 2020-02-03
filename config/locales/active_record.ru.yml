@@ -3,6 +3,7 @@ ru:
     models:
       test: "Тест"
       question: "Вопрос"
+      gists: "Gist"
 
     attributes:
       test:
@@ -13,6 +14,10 @@ ru:
         author_id: "Автор"
       question:
         body: "Текст"
+      gist:
+        url: "Gist"
+        question_id: "Вопрос"
+        user_id: "Пользователь"
 
     errors:
       messages:

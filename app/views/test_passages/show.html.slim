@@ -2,7 +2,9 @@
   .col
     h2= "Passing the #{@test_passage.test.title} Test"
 
-    = question_numbers(@test_passage)
+    p= question_numbers(@test_passage)
+
+    p= link_to 'Gist Question', gist_test_passage_path(@test_passage), method: :post
 
   .col-md-8
     .card.border-primary.p-5
@@ -16,5 +18,6 @@
               .form-check.mb-2
                 = b.check_box id: "answer_ids_#{b.object.id}", class: 'form-check-input'
                 = b.label
+
 
             = form.submit 'Next', class: 'btn btn-outline-primary btn-sm'

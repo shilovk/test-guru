@@ -6,10 +6,15 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Dotenv::Railtie.load
+
 module TestGuru
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    config.autoload_paths += %W[
+      #{config.root}/lib/clients
+    ]
 
     config.time_zone = 'Moscow'
 
