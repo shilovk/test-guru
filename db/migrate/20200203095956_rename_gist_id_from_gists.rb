@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RenameGistIdFromGists < ActiveRecord::Migration[6.0]
   def self.up
     rename_column :gists, :gist_id, :url

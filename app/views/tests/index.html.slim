@@ -4,7 +4,10 @@
   table.table.table-sm.table-striped
     thead
       tr
-        th scope="col"= Test.human_attribute_name(:title)
+        th scope="col" class="sort-by-title pointer"
+          = Test.human_attribute_name(:title)
+          = octicon 'arrow-up', class: 'text-success hide'
+          = octicon 'arrow-down', class: 'text-success hide'
         th scope="col"= Test.human_attribute_name(:level)
         th scope="col"= Test.human_attribute_name(:category_id)
         th scope="col"= Test.human_attribute_name(:question_ids)
