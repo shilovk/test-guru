@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddTestToQuestion < ActiveRecord::Migration[6.0]
   def change
     # rubocop:disable all

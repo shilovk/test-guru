@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Test < ApplicationRecord
   has_many :questions, -> { order(:id) }, dependent: :destroy
   has_many :test_passages, dependent: :destroy
