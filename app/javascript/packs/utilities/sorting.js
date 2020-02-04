@@ -38,7 +38,7 @@ function sortRowsByTitle(control) {
   sortedTable.classList = table.classList
   sortedTable.appendChild(rows[0])
 
-  for (var i = 0; i < sortedRows.length; i++) {
+  for (i = 0; i < sortedRows.length; i++) {
     sortedTable.appendChild(sortedRows[i])
   }
 

@@ -1,3 +1,6 @@
 {
-  "asi"  : true
+  "asi"  : true,
+  "parserOptions": {
+      "sourceType": "module"
+  }
 }
