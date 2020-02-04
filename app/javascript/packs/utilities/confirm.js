@@ -13,7 +13,6 @@ document.addEventListener("turbolinks:load", () => {
     confirm.addEventListener('keyup', () => {
       var result = comparePasswordAndConfirmPassword(password, confirm)
       compareAlert(result)
-      console.log('1')
     })
   }
 })
