@@ -5,34 +5,24 @@ document.addEventListener("turbolinks:load", () => {
   var confirm = document.querySelector('.check-confirm-password')
 
   if ((password) && (confirm)) {
-    password.addEventListener('keyup', () => {
-      var result = comparePasswordAndConfirmPassword(password, confirm)
-      if (confirm.value !== "") { compareAlert(result) }
-    })
+    password.oninput = comparePasswordAndConfirmPassword
+    confirm.oninput = comparePasswordAndConfirmPassword
+  }
 
-    confirm.addEventListener('keyup', () => {
-      var result = comparePasswordAndConfirmPassword(password, confirm)
-      compareAlert(result)
-    })
+  function comparePasswordAndConfirmPassword() {
+    if (confirm.value === "") { compareAlert(); return }
+
+    compareAlert(password.value == confirm.value)
   }
 })
 
-function comparePasswordAndConfirmPassword(password, confirm) {
-  if (password.value == confirm.value) { return true }
-  return false
-}
 
 function compareAlert(result) {
+  var colors = { true:'green', false:'red' }
   var elements = document.querySelectorAll('.compareAlert')
-  if (result) {
-    elements.forEach((element) => {
-      element.classList.remove('red')
-      element.classList.add('green')
-    })
-  } else {
-    elements.forEach((element) => {
-      element.classList.remove('green')
-      element.classList.add('red')
-    })
-  }
+
+  elements.forEach((element) => {
+    element.classList.remove.apply(element.classList, Object.values(colors))
+    if (colors[result]) { element.classList.add(colors[result]) }
+  })
 }
