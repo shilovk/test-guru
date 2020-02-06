@@ -21,7 +21,8 @@ module TestPassagesHelper
         'aria-valuemax': '100',
         'aria-valuemin': '0',
         'aria-valuenow': '0',
-        style: "width: 0%") do
+        style: 'width: 0%'
+      ) do
         progress.to_s + '%'
       end
     end
