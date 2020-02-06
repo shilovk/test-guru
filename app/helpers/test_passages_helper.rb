@@ -12,15 +12,16 @@ module TestPassagesHelper
     end
   end
 
-  def progressbar(progress, type = :primary, animate = false)
+  def progress_bar(progress = 0, type = :primary, animate = false)
     content_tag(:div, class: 'progress') do
-      content_tag(:div,
-                  role: 'progressbar',
-                  class: "progress-bar #{line_with(animate)} bg-#{type}",
-                  'aria-valuemax': '100',
-                  'aria-valuemin': '0',
-                  'aria-valuenow': progress.to_s,
-                  style: "width: #{progress}%") do
+      content_tag(
+        :div,
+        class: "progress-bar #{line_with(animate)} bg-#{type}",
+        role: 'progressbar',
+        'aria-valuemax': '100',
+        'aria-valuemin': '0',
+        'aria-valuenow': '0',
+        style: "width: 0%") do
         progress.to_s + '%'
       end
     end
