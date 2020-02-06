@@ -16,7 +16,6 @@ document.addEventListener("turbolinks:load", () => {
   }
 })
 
-
 function compareAlert(result) {
   var colors = { true:'green', false:'red' }
   var elements = document.querySelectorAll('.compareAlert')

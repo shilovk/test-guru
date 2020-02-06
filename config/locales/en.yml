@@ -36,6 +36,9 @@ en:
       actions: "Actions"
       not_records: "Not created Tests"
 
+
+
+
   test_passages:
     result:
       header: "Test %{title} was Completed!"
@@ -54,6 +57,8 @@ en:
         new: "Create Test"
         actions: "Actions"
         not_records: "Not created Tests"
+      form_inline:
+        submit: "OK"
       show:
         header: "Show Test"
         new: "Create Question"
