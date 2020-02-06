@@ -1,6 +1,12 @@
 {
   "asi": true,
   "parserOptions": {
-      "sourceType": "module"
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jquery": true
   }
 }
