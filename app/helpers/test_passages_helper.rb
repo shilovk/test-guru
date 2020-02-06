@@ -18,10 +18,10 @@ module TestPassagesHelper
         :div,
         class: "progress-bar #{line_with(animate)} bg-#{type}",
         role: 'progressbar',
-        'aria-valuemax': '100',
-        'aria-valuemin': '0',
-        'aria-valuenow': '0',
-        style: 'width: 0%'
+        style: 'width: 0%',
+        'aria-valuenow' => '0',
+        'aria-valuemin' => '0',
+        'aria-valuemax' => '100'
       ) do
         progress.to_s + '%'
       end
