@@ -1,14 +1,14 @@
 document.addEventListener('turbolinks:load', function() {
-  $('.form-inline-link').on('click', formInlineLinkHandler)
+  var $controls = $('.form-inline-link')
+  $controls.on('click', formInlineLinkHandler)
 
   var errors = document.querySelector('.resource-errors')
 
-  if (errors) {
+  if (($controls) && ($controls.length != 0) && (errors)) {
     var resourceId = errors.dataset.resourceId
     formInlineHandler(resourceId)
   }
 })
-
 
 function formInlineLinkHandler(event) {
   event.preventDefault()
@@ -26,8 +26,8 @@ function formInlineHandler(testId) {
   $formInline.toggle()
 
   if ($formInline.is(':visible')) {
-    link.text = 'Cencel'
+    link.textContent = 'Cancel'
   } else {
-    link.text = 'Edit'
+    link.textContent = 'Edit'
   }
 }
