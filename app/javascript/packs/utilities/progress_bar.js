@@ -5,7 +5,7 @@ document.addEventListener("turbolinks:load", () => {
   var control = document.querySelector('.progress-bar')
 
   if (control) {
-    var progress = control.textContent
+    var progress = control.dataset.progress
     changeProgressBar(control, progress)
   }
 })

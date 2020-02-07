@@ -17,11 +17,12 @@ module TestPassagesHelper
       content_tag(
         :div,
         class: "progress-bar #{line_with(animate)} bg-#{type}",
-        role: 'progressbar',
-        style: 'width: 0%',
-        'aria-valuenow' => '0',
+        'aria-valuemax' => '100',
         'aria-valuemin' => '0',
-        'aria-valuemax' => '100'
+        'aria-valuenow' => '0',
+        data: { progress: progress },
+        role: 'progressbar',
+        style: 'width: 0%'
       ) do
         progress.to_s + '%'
       end
