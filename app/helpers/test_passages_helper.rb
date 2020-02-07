@@ -11,4 +11,25 @@ module TestPassagesHelper
       p.concat content_tag(:h3, "Score: #{test_passage.result_percent}%")
     end
   end
+
+  def progress_bar(progress = 0, type = :primary, animate = false)
+    content_tag(:div, class: 'progress') do
+      content_tag(
+        :div,
+        class: "progress-bar #{line_with(animate)} bg-#{type}",
+        'aria-valuemax' => '100',
+        'aria-valuemin' => '0',
+        'aria-valuenow' => '0',
+        data: { progress: progress },
+        role: 'progressbar',
+        style: 'width: 0%'
+      ) do
+        progress.to_s + '%'
+      end
+    end
+  end
+
+  def line_with(animate)
+    animate ? 'progress-bar-striped progress-bar-animated' : ''
+  end
 end

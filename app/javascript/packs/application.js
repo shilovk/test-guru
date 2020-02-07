@@ -14,11 +14,13 @@ require("channels")
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
 
-const images = require.context('../images', true)
+const images = require.context("../images", true)
 const imagePath = (name) => images(name, true)
 
 import "../src/application"
 
 import "./bootstrap_custom"
 require("./utilities/confirm")
+require("./utilities/form_inline")
+require("./utilities/progress_bar")
 require("./utilities/sorting")

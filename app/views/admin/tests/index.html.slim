@@ -5,6 +5,8 @@
 
       p= link_to t('.new'), new_admin_test_path
 
+      p= render 'shared/errors', resource: @test
+
       table.table.table-sm.table-secondary
         thead.thead-light
           tr
@@ -16,7 +18,7 @@
             th scope="col"= Test.human_attribute_name(:category_id)
             th scope="col"= Test.human_attribute_name(:question_ids)
             th scope="col"= Test.human_attribute_name(:author_id)
-            th scope="col" colspan="3"= t('.actions')
+            th scope="col" colspan="4"= t('.actions')
         tbody= render @tests
     - else
      .alert.alert-warning role="alert"= t('.not_records')

@@ -17,19 +17,23 @@ class TestPassage < ApplicationRecord
   end
 
   def questions_count
-    test.questions.count
+    @questions_count = test.questions.count
   end
 
   def current_question_number
-    test.questions.where('id <= ?', current_question.id).count
+    @current_question_number = test.questions.where('id <= ?', current_question.id).count
   end
 
   def result_percent
-    @correct_questions = correct_questions * 100 / questions_count
+    @result_percent = correct_questions * 100 / questions_count
   end
 
   def result_message
     @result_message = result_percent >= 85 ? 'success' : 'fail'
+  end
+
+  def progress
+    current_question_number * 100 / questions_count
   end
 
   private

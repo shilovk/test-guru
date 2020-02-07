@@ -1,11 +1,21 @@
 tr
-  th scope="row"= test.title
+  th scope='row' class='align-middle'
+    = content_tag :span, test.title, class: 'test-title', data: { test_id: test.id }
+    = render 'form_inline', test: test == @test ? @test : test
   td= test_level(test)
   td= test.category.title
   td= test.questions.count
   td= test.author&.email
-  td= link_to t('links.show'), admin_test_path(test), class: 'btn btn-outline-info btn-sm'
-  td= link_to t('links.edit'), edit_admin_test_path(test), class: 'btn btn-outline-secondary btn-sm'
+  td= link_to t('links.show'),
+              admin_test_path(test),
+              class: 'btn btn-outline-info btn-sm'
+  td= link_to t('links.edit'),
+              edit_admin_test_path(test),
+              data: { test_id: test.id },
+              class: 'form-inline-link'
+  td= link_to t('links.edit'),
+              edit_admin_test_path(test),
+              class: 'btn btn-outline-primary btn-sm'
   td= link_to t('links.delete.title'),
               admin_test_path(test),
               method: :delete,
