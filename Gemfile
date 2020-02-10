@@ -33,8 +33,8 @@ gem 'slim-rails', '~> 3.2.0'
 # UI
 
 gem 'bootstrap', '~> 4.4.1'
-gem 'octicons_helper'
 gem 'foreman'
+gem 'octicons_helper'
 gem 'jquery-rails'
 
 gem 'octokit', '~> 4.0'
