@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class MessagesController < ApplicationController
-  # frozen_string_literal: true
+  skip_before_action :authenticate_user!, only: :contact
 
   def contact
     if params[:text].present? && params[:email].present?
