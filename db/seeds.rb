@@ -1,36 +1,44 @@
 # rubocop:disable all
-users_array = []
-users_array << { name: 'Adm', email: 'admin@admin.ru', password: 'adm', admin: true }
-users_array << { name: 'Tom', email: 'tom@tom.ru', password: 'tom' }
-users_array << { name: 'Jerry', email: 'jerry@jerry.ru', password: 'jerry' }
-pp users = User.create!(users_array)
 
-categories_array = %w[Ruby Rails Go HTML].each_with_object([]) do |title, memo|
-  memo << { title: title }
-end
-pp categories = Category.create!(categories_array)
+pp admin = Admin.create!(first_name: 'Admin', last_name: 'Admin', password: '123456',  email: 'testguru2021@gmail.com')
+pp user = User.create!(first_name: 'User', last_name: 'User', password: '123456', email: 'shilovk@gmail.com')
 
-tests_array = categories.each_with_object([]) do |category, memo|
-  memo << { title: 'Begin', level: rand(1..5), published: true, category_id: category.id, author_id: users.first.id }
-end
-pp tests = Test.create!(tests_array)
+pp category = Category.create!(title: 'Ruby')
 
-questions_array = tests.each_with_object([]) do |test, memo|
-  memo << { body: 'Is it frontend', test_id: test.id }
-  memo << { body: 'Is it backend', test_id: test.id }
-end
-pp questions = Question.create!(questions_array)
+# test 1 in Ruby
 
-answers_array = questions.each_with_object([]) do |question, memo|
-  memo << { body: 'Yes', correct: false, question_id: question.id }
-  memo << { body: 'No', correct: true, question_id: question.id }
-end
-pp Answer.create!(answers_array)
+pp test = Test.create!(title: 'First', level: 1, published: true, category_id: category.id, author_id: admin.id)
 
-tests_users_array = users.each_with_object([]) do |user, memo|
-  tests.each do |test|
-    memo << { value: rand(1..2), test_id: test.id, user_id: user.id }
-  end
-end
-pp TestUser.create!(tests_users_array)
+pp question = Question.create!(body: 'Is it frontend language?', test_id: test.id)
+pp answer1 = Answer.create!(body: 'Yes', correct: false, question_id: question.id)
+pp answer2 = Answer.create!(body: 'No', correct: true, question_id: question.id)
+
+pp question = Question.create!(body: 'Is it backend language?', test_id: test.id)
+pp answer1 = Answer.create!(body: 'Yes', correct: true, question_id: question.id)
+pp answer2 = Answer.create!(body: 'No', correct: false, question_id: question.id)
+
+pp question = Question.create!(body: 'Who is author?', test_id: test.id)
+pp answer1 = Answer.create!(body: 'Matz', correct: true, question_id: question.id)
+pp answer2 = Answer.create!(body: 'Mozart', correct: false, question_id: question.id)
+pp gist = Gist.create!(url: 'http://test1.test', user_id: user.id, question_id: question.id)
+
+pp test_passage1 = TestPassage.create!(user_id: user.id, test_id: test.id, correct_questions: 1)
+pp test_passage2 = TestPassage.create!(user_id: user.id, test_id: test.id, correct_questions: 3)
+
+# test 1 in Ruby
+
+pp test = Test.create!(title: 'Second', level: 3, published: true, category_id: category.id, author_id: admin.id)
+
+pp question = Question.create!(body: 'Is it a object oriented language', test_id: test.id)
+pp answer1 = Answer.create!(body: 'Yes', correct: true, question_id: question.id)
+pp answer2 = Answer.create!(body: 'No', correct: false, question_id: question.id)
+
+pp question = Question.create!(body: 'Can be metaprogramming?', test_id: test.id)
+pp answer1 = Answer.create!(body: 'Yes', correct: true, question_id: question.id)
+pp answer2 = Answer.create!(body: 'No', correct: false, question_id: question.id)
+pp gist = Gist.create!(url: 'http://test2.test', user_id: user.id, question_id: question.id)
+
+pp test_passage1 = TestPassage.create!(user_id: user.id, test_id: test.id, correct_questions: 1)
+pp test_passage2 = TestPassage.create!(user_id: user.id, test_id: test.id, correct_questions: 3)
+
 # rubocop:enable all
