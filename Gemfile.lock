@@ -302,7 +302,7 @@ DEPENDENCIES
   rails-i18n (~> 6.0.0)
   rubocop-rails
   sass-rails (>= 6)
-  sassc (~> 2.2.0)
+  sassc (~> 2.2.1)
   selenium-webdriver
   slim-rails (~> 3.2.0)
   spring
