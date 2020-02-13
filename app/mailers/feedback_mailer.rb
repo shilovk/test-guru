@@ -5,6 +5,6 @@ class FeedbackMailer < ApplicationMailer
     @feedback = feedback
     @admin = Admin.for_feedback
 
-    mail to: @admin if @admin.present?
+    mail to: @admin.email if @admin.present?
   end
 end
