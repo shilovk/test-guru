@@ -2,7 +2,6 @@
 
 class FeedbackController < ApplicationController
   skip_before_action :authenticate_user!
-  respond_to :html
 
   def new
     @feedback = Feedback.new
@@ -10,9 +9,13 @@ class FeedbackController < ApplicationController
 
   def create
     @feedback = Feedback.new(feedback_params)
-    @feedback.send
-
-    respond_with @feedback, location: root_path, alert: 'Feedback was sent successfuly!'
+    if @feedback.valid?
+      @feedback.to_email
+      flash[:notice] = 'Feedback was sent successfuly!'
+      redirect_to user_signed_in? ? root_path : new_user_session_path
+    else
+      render :new
+    end
   end
 
   private

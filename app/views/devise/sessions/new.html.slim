@@ -2,10 +2,10 @@
   .col.col-md-4
     h2= t('.sign_in')
 
-    .card.border-primary
-      .card-body
-        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          .form-group
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .card.border-primary
+        .card-body
+          .form-group.p-3
             p
               = f.label :email
               = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
@@ -14,11 +14,11 @@
               = f.label :password
               = f.password_field :password, autocomplete: "current-password", class: 'form-control'
 
-          - if devise_mapping.rememberable?
-            .form-check.mb-2
-              = f.check_box :remember_me, class: 'form-check-input'
-              = f.label :remember_me, class: 'form-check-label'
+            - if devise_mapping.rememberable?
+              .form-check.mb-1
+                = f.check_box :remember_me, class: 'form-check-input'
+                = f.label :remember_me, class: 'form-check-label'
 
-          = f.submit t('.sign_in'), class: 'btn btn-primary'
+            p= f.submit t('.sign_in'), class: 'btn btn-primary'
 
-    .mt-1= render "devise/shared/links"
+            .mt-1= render "devise/shared/links"
