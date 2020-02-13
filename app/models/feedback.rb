@@ -11,5 +11,4 @@ class Feedback
   def to_email
     FeedbackMailer.feedback(self).deliver_now
   end
-
 end
