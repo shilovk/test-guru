@@ -5,11 +5,14 @@ nav.navbar.navbar-light.bg-light
     - if current_user.admin?
       .nav-item= link_to_unless current_page?(admin_tests_url), 'Admin Panel', admin_tests_path, class: 'nav-link'
 
+  .nav-item= link_to_unless current_page?(new_feedback_url), 'Contact', new_feedback_path, class: 'nav-link'
+
+  - if user_signed_in?
     .navbar-text
       .nav-item.d-inline= "Welcome, <b>#{current_user.email}</b> Guru".html_safe
       = link_to t(".sign_out"), destroy_user_session_path, method: :delete, class: 'nav-item nav-link d-inline'
   - else
-    - if devise_mapping.registerable? && controller_name != 'registrations'
-      = link_to t(".sign_up"), new_registration_path(resource_name), class: 'nav-item nav-link d-inline'
+    - if controller_name != 'registrations'
+      = link_to t(".sign_up"), new_user_registration_path, class: 'nav-item nav-link d-inline'
     - if controller_name != 'sessions'
       = link_to t(".sign_in"), new_user_session_path, class: 'nav-item nav-link d-inline'

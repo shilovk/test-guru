@@ -3,12 +3,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
-gem 'pg'
+gem 'pg', '~>1.2.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2.1'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
+gem 'sassc', '~> 2.2.1'
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
@@ -33,9 +34,9 @@ gem 'slim-rails', '~> 3.2.0'
 # UI
 
 gem 'bootstrap', '~> 4.4.1'
-gem 'octicons_helper'
 gem 'foreman'
 gem 'jquery-rails'
+gem 'octicons_helper'
 
 gem 'octokit', '~> 4.0'
 
@@ -44,6 +45,8 @@ gem 'octokit', '~> 4.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+
+gem 'passenger', '5.3.7', group: :production
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
