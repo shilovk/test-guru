@@ -1,0 +1,16 @@
+Обратная связь
+==============
+
+Сообщение
+---------
+<%= @feedback.body.html_safe %>
+
+Контакты
+--------
+<%= @feedback.email %>
+<%= @feedback.phone %>
+
+От
+--
+<%= @feedback.first_name %>
+<%= @feedback.last_name %>

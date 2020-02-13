@@ -1,0 +1,17 @@
+h1 Обратная связь
+
+h6 Сообщение
+
+p= @feedback.body.html_safe
+
+h6 Контакты
+p
+  = @feedback.email
+  br
+  = @feedback.phone
+
+h6 От
+p
+  = @feedback.first_name
+  br
+  = @feedback.last_name

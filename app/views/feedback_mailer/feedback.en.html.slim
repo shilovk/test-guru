@@ -1,0 +1,17 @@
+h1 Feedback
+
+h6 Message
+
+p= @feedback.body.html_safe
+
+h6 Contact
+p
+  = @feedback.email
+  br
+  = @feedback.phone
+
+h6 From
+p
+  = @feedback.first_name
+  br
+  = @feedback.last_name
