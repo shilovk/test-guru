@@ -3,8 +3,8 @@
 class CreateRules < ActiveRecord::Migration[6.0]
   def change
     create_table :rules do |t|
-      t.string :name, null: false
-      t.string :type, null: false
+      t.string :name, default: '', null: false
+      t.string :type, default: '', null: false
       t.integer :need_pass, default: 0, null: false
       t.integer :attempt, default: 0, null: false
 

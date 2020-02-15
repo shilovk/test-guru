@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_02_15_134837) do
   end
 
   create_table "badges", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_badges_on_name", unique: true
@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(version: 2020_02_15_134837) do
   end
 
   create_table "rules", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "type", null: false
+    t.string "name", default: "", null: false
+    t.string "type", default: "", null: false
     t.integer "need_pass", default: 0, null: false
     t.integer "attempt", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
