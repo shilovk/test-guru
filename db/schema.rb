@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_08_105903) do
+ActiveRecord::Schema.define(version: 2020_02_15_124553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,23 @@ ActiveRecord::Schema.define(version: 2020_02_08_105903) do
     t.boolean "correct", default: false, null: false
     t.bigint "question_id", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "badge_users", id: false, force: :cascade do |t|
+    t.bigint "badge_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "count", default: 0, null: false
+    t.index ["badge_id"], name: "index_badge_users_on_badge_id"
+    t.index ["user_id"], name: "index_badge_users_on_user_id"
+  end
+
+  create_table "badges", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "rule_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_badges_on_name", unique: true
+    t.index ["rule_id"], name: "index_badges_on_rule_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -41,12 +58,31 @@ ActiveRecord::Schema.define(version: 2020_02_08_105903) do
     t.index ["user_id"], name: "index_gists_on_user_id"
   end
 
+  create_table "pictures", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "imageable_type", null: false
+    t.bigint "imageable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "test_id", null: false
     t.index ["test_id"], name: "index_questions_on_test_id"
+  end
+
+  create_table "rules", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "type", null: false
+    t.integer "need_pass", default: 0, null: false
+    t.integer "attempt", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_rules_on_name", unique: true
   end
 
   create_table "test_passages", force: :cascade do |t|
@@ -101,6 +137,9 @@ ActiveRecord::Schema.define(version: 2020_02_08_105903) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "badge_users", "badges"
+  add_foreign_key "badge_users", "users"
+  add_foreign_key "badges", "rules"
   add_foreign_key "gists", "questions"
   add_foreign_key "gists", "users"
   add_foreign_key "questions", "tests"
