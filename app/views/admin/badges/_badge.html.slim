@@ -1,0 +1,18 @@
+tr
+  th scope='row' class='align-middle'= badge.name
+  td Picture
+  td Rules
+  td= link_to t('links.show'),
+              admin_badge_path(badge),
+              class: 'btn btn-outline-info btn-sm'
+  td= link_to t('links.edit'),
+              edit_admin_badge_path(badge),
+              data: { badge_id: badge.id },
+              class: 'form-inline-link'
+  td= link_to t('links.edit'),
+              edit_admin_badge_path(badge),
+              class: 'btn btn-outline-primary btn-sm'
+  td= link_to t('links.delete.title'),
+              admin_badge_path(badge),
+              method: :delete,
+              data: { confirm: t('links.delete.confirm') }, class: 'btn btn-outline-danger btn-sm'

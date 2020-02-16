@@ -1,0 +1,19 @@
+.row.justify-content-center
+  .col.col-md-4
+    h2 Badge
+
+    p
+      = Badge.human_attribute_name(:name)
+      br= @badge.name
+
+    p Picture
+
+    p Rules
+
+    /p= link_to 'New Rule', new_admin_badge_rule_path(@badge)
+
+    /ol= render @badge.rules
+
+    p
+      = link_to 'Back', admin_badges_path, class: 'btn btn-outline-info btn-sm'
+      = link_to 'Edit', edit_admin_badge_path(@badge), class: 'btn btn-outline-secondary btn-sm'

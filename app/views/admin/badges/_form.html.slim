@@ -1,0 +1,16 @@
+= form_with model: [:admin, @badge], local: true do |form|
+  = render 'shared/errors', resource: @badge
+  .card.border-primary
+    .card-body.row
+      .form-group
+        p
+          = form.label :name
+          = form.text_field :name, id: :badge_name
+
+        p Picture
+
+        p Rules
+
+        p= form.submit 'Save', class: 'btn btn-primary'
+
+= link_to t('links.back'), admin_badges_path

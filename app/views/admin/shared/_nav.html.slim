@@ -2,6 +2,7 @@ nav.navbar
   = link_to 'TestGuru', root_path, class: 'navbar-brand'
 
   .nav-item= link_to_unless current_page?(admin_tests_url), 'Admin Panel', admin_tests_path, class: 'nav-link'
+  .nav-item= link_to_unless current_page?(admin_badges_url), 'Badges', admin_badges_path, class: 'nav-link'
   .nav-item= link_to_unless current_page?(admin_gists_url), 'Gists', admin_gists_path, class: 'nav-link'
 
   .navbar-text

@@ -1,9 +1,9 @@
 .row
   .col
+    p= link_to t('.new'), new_admin_test_path
+
     - if @tests.present?
       h1= t('.header')
-
-      p= link_to t('.new'), new_admin_test_path
 
       p= render 'shared/errors', resource: @test
 

@@ -6,5 +6,5 @@ class Badge < ApplicationRecord
 
   has_many :pictures, as: :imageable
 
-  validates :name, presence: true, uniqueness: { case_sensitive: false }
+  # validates :name, presence: true, uniqueness: { case_sensitive: false }
 end
