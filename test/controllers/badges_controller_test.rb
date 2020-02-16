@@ -10,5 +10,4 @@ class BadgesControllerTest < ActionDispatch::IntegrationTest
     get badges_show_url
     assert_response :success
   end
-
 end
