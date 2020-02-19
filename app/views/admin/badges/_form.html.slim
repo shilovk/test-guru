@@ -1,16 +1,32 @@
-= form_with model: [:admin, @badge], local: true do |form|
-  = render 'shared/errors', resource: @badge
-  .card.border-primary
-    .card-body.row
-      .form-group
-        p
-          = form.label :name
-          = form.text_field :name, id: :badge_name
+.row.justify-content-center
+  .col.col-md-6
+    h2= t('.header')
+    = form_with model: [:admin, @badge], local: true do |form|
+      = render 'shared/errors', resource: @badge
+      .card.border-primary
+        .card-body.row
+          .form-group
+            p
+              = form.label :title
+              = form.text_field :title, id: :badge_title, class: 'form-control'
 
-        p Picture
+            p
+              = form.label :image
+              = form.file_field :image, class: 'form-control'
+              - if @badge.image.attached?
+                = link_to image_tag(@badge.image.variant(resize_to_limit: [100, 100])), rails_blob_path(@badge.image, disposition: "attachment")
+                .form-check.mb-1
+                  = check_box_tag :purge, class: 'form-check-input'
+                  = label_tag :purge, 'delete', class: 'form-check-label'
 
-        p Rules
+            p
+              = form.label :award_rule_type
+              = form.select :award_rule_type, { 'Main' => :first, 'Last' => :second }, prompt: true, id: :badge_award_rule_type
 
-        p= form.submit 'Save', class: 'btn btn-primary'
+            p
+              = form.label :award_rule_value
+              = form.number_field :award_rule_value, min: 1, step: 1, id: :badge_award_rule_value
 
-= link_to t('links.back'), admin_badges_path
+            p= form.submit 'Save', class: 'btn btn-primary'
+
+    = link_to t('links.back'), admin_badges_path

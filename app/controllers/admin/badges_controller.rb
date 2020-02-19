@@ -32,6 +32,7 @@ class Admin::BadgesController < Admin::BaseController
 
   def update
     if @badge.update(badge_params)
+
       redirect_to [:admin, @badge], notice: 'Succussfuly updated'
     else
       render :edit
@@ -54,7 +55,11 @@ class Admin::BadgesController < Admin::BaseController
     @badge = Badge.find(params[:id])
   end
 
+  def purge
+    @badge&.image&.purge if params[:purge]
+  end
+
   def badge_params
-    params.require(:badge).permit(:name)
+    params.require(:badge).permit(:name, :image, :award_rule_type, :award_rule_value)
   end
 end

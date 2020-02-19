@@ -10,13 +10,11 @@
       table.table.table-sm.table-secondary
         thead.thead-light
           tr
-            th scope="col" class="sort-by-title pointer"
-              = Badge.human_attribute_name(:name)
-              = octicon 'arrow-up', class: 'text-success hide'
-              = octicon 'arrow-down', class: 'text-success hide'
-            th scope="col" Picture
-            th scope="col" Rules
-            th scope="col" colspan="4"= t('.actions')
+            th scope="col"= Badge.human_attribute_name(:title)
+            th scope="col"= Badge.human_attribute_name(:image)
+            th scope="col"= Badge.human_attribute_name(:award_rule_type)
+            th scope="col"= Badge.human_attribute_name(:award_rule_value)
+            th scope="col" colspan="3"= t('.actions')
         tbody= render @badges
     - else
      .alert.alert-warning role="alert"= t('.not_records')

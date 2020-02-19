@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_many :created_tests, class_name: 'Test', inverse_of: :author, foreign_key: 'author_id', dependent: :nullify
   has_many :gists, dependent: :destroy
 
-  has_many :badge_users, dependent: :destroy
-  has_many :badges, through: :badge_users
+  has_many :badge_receives, dependent: :destroy
+  has_many :badges, through: :badge_receives, class_name: 'Badge', foreign_key: :user_id
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, and :omniauthable

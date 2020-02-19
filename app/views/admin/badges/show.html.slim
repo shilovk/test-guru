@@ -3,16 +3,20 @@
     h2 Badge
 
     p
-      = Badge.human_attribute_name(:name)
-      br= @badge.name
+      = Badge.human_attribute_name(:title)
+      br= @badge.title
 
-    p Picture
+    p
+      = Badge.human_attribute_name(:image)
+      br= link_to image_tag(@badge.image.variant(resize_to_limit: [100, 100])), url_for(@badge.image), target: '_blank', title: 'Preview' if @badge.image.attached?
 
-    p Rules
+    p
+      = Badge.human_attribute_name(:award_rule_type)
+      br= @badge.award_rule_type
 
-    /p= link_to 'New Rule', new_admin_badge_rule_path(@badge)
-
-    /ol= render @badge.rules
+    p
+      = Badge.human_attribute_name(:award_rule_value)
+      br= @badge.award_rule_value
 
     p
       = link_to 'Back', admin_badges_path, class: 'btn btn-outline-info btn-sm'
