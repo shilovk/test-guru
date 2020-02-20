@@ -56,10 +56,10 @@ class Admin::BadgesController < Admin::BaseController
   end
 
   def purge
-    @badge&.image&.purge if params[:purge]
+    @badge&.image.purge if params[:purge]
   end
 
   def badge_params
-    params.require(:badge).permit(:name, :image, :award_rule_type, :award_rule_value)
+    params.require(:badge).permit(:title, :image, :category_id, :test_level, :is_first_try)
   end
 end

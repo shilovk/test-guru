@@ -2,7 +2,7 @@ tr
   th scope='row' class='align-middle'
     = content_tag :span, test.title, class: 'test-title', data: { test_id: test.id }
     = render 'form_inline', test: test == @test ? @test : test
-  td= test_level(test)
+  td= test.level_type
   td= test.category.title
   td= test.questions.count
   td= test.author&.email

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_091727) do
+ActiveRecord::Schema.define(version: 2020_02_20_091159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,20 +45,24 @@ ActiveRecord::Schema.define(version: 2020_02_19_091727) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
-  create_table "badge_receives", id: false, force: :cascade do |t|
-    t.bigint "badge_id", null: false
-    t.bigint "user_id", null: false
+  create_table "badge_users", id: false, force: :cascade do |t|
+    t.bigint "badge_id"
+    t.bigint "user_id"
     t.integer "count", default: 0, null: false
-    t.index ["badge_id"], name: "index_badge_receives_on_badge_id"
-    t.index ["user_id"], name: "index_badge_receives_on_user_id"
+    t.index ["badge_id", "user_id"], name: "index_badge_users_on_badge_id_and_user_id", unique: true
+    t.index ["badge_id"], name: "index_badge_users_on_badge_id"
+    t.index ["user_id"], name: "index_badge_users_on_user_id"
   end
 
   create_table "badges", force: :cascade do |t|
     t.string "title", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "award_rule_type", default: "", null: false
-    t.integer "award_rule_value", default: 0, null: false
+    t.bigint "category_id"
+    t.string "test_level", default: ""
+    t.boolean "is_first_try", default: false, null: false
+    t.index ["category_id", "test_level", "is_first_try"], name: "index_badges_conditions_unique", unique: true
+    t.index ["category_id"], name: "index_badges_on_category_id"
     t.index ["title"], name: "index_badges_on_title", unique: true
   end
 
@@ -103,7 +107,9 @@ ActiveRecord::Schema.define(version: 2020_02_19_091727) do
     t.integer "correct_questions", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "passed", default: false, null: false
     t.index ["current_question_id"], name: "index_test_passages_on_current_question_id"
+    t.index ["passed"], name: "index_test_passages_on_passed"
     t.index ["test_id"], name: "index_test_passages_on_test_id"
     t.index ["user_id"], name: "index_test_passages_on_user_id"
   end
@@ -149,8 +155,8 @@ ActiveRecord::Schema.define(version: 2020_02_19_091727) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "questions"
-  add_foreign_key "badge_receives", "badges"
-  add_foreign_key "badge_receives", "users"
+  add_foreign_key "badge_users", "badges"
+  add_foreign_key "badge_users", "users"
   add_foreign_key "gists", "questions"
   add_foreign_key "gists", "users"
   add_foreign_key "questions", "tests"

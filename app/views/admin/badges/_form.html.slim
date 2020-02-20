@@ -20,12 +20,17 @@
                   = label_tag :purge, 'delete', class: 'form-check-label'
 
             p
-              = form.label :award_rule_type
-              = form.select :award_rule_type, { 'Main' => :first, 'Last' => :second }, prompt: true, id: :badge_award_rule_type
+              = form.label :category
+              = form.collection_select :category_id, Category.all, :id, :title, prompt: true, id:  :badge_category_id, class: 'form-control'
 
             p
-              = form.label :award_rule_value
-              = form.number_field :award_rule_value, min: 1, step: 1, id: :badge_award_rule_value
+              = form.label :test_level
+              = form.select :test_level, Test::LEVEL_TYPES, prompt: true, id: :badge_test_level, class: 'form-control'
+
+            p
+              .form-check.mb-1
+                = form.check_box :is_first_try, class: 'form-check-input'
+                = form.label :is_first_try, class: 'form-check-label'
 
             p= form.submit 'Save', class: 'btn btn-primary'
 
