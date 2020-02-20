@@ -12,10 +12,6 @@ admin.add_badge(badge1)
 admin.add_badge(badge2)
 admin.add_badge(badge2)
 
-user.add_badge(badge2)
-user.add_badge(badge2)
-user.add_badge(badge2)
-
 # test 1 in Ruby
 
 pp test = Test.create!(title: 'First', level: 1, published: true, category_id: category.id, author_id: admin.id)
@@ -49,7 +45,7 @@ pp answer1 = Answer.create!(body: 'Yes', correct: true, question_id: question.id
 pp answer2 = Answer.create!(body: 'No', correct: false, question_id: question.id)
 pp gist = Gist.create!(url: 'http://test2.test', user_id: user.id, question_id: question.id)
 
-pp test_passage1 = TestPassage.create!(user_id: user.id, test_id: test.id, correct_questions: 2, passed: true)
-pp test_passage2 = TestPassage.create!(user_id: user.id, test_id: test.id, correct_questions: 1, passed: false)
+# pp test_passage1 = TestPassage.create!(user_id: user.id, test_id: test.id, correct_questions: 2, passed: true)
+# pp test_passage2 = TestPassage.create!(user_id: user.id, test_id: test.id, correct_questions: 1, passed: false)
 
 # rubocop:enable all
