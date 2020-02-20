@@ -16,6 +16,8 @@ class Test < ApplicationRecord
   validates :level, numericality: { only_integer: true, greater_than: 0 }
   validates :title, uniqueness: { scope: :level, case_sensitive: false, message: 'with this level is already exists' }
 
+  scope :find_with_category_title, ->(title) { joins(:category).where(categories: { title: title }).order(title: :desc) }
+
   LEVEL_TYPES.each do |type|
     scope type, -> { where(level: levels[type]) }
   end
@@ -28,6 +30,10 @@ class Test < ApplicationRecord
     @levels = LEVEL_TYPES.each_with_object({}).with_index do |(type, memo), index|
       memo[type] = LEVEL_RANGES[index]
     end
+  end
+
+  def self.level_range_of(level_type)
+    levels[level_type.to_sym]
   end
 
   def level_type

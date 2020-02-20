@@ -21,11 +21,11 @@
 
             p
               = form.label :category
-              = form.collection_select :category_id, Category.all, :id, :title, prompt: true, id:  :badge_category_id, class: 'form-control'
+              = form.collection_select :category_id, Category.all, :id, :title, include_blank: true, id:  :badge_category_id, class: 'form-control'
 
             p
-              = form.label :test_level
-              = form.select :test_level, Test::LEVEL_TYPES, prompt: true, id: :badge_test_level, class: 'form-control'
+              = form.label :test_level_type
+              = form.select :test_level_type, Test::LEVEL_TYPES, include_blank: true, id: :badge_test_level_type, class: 'form-control'
 
             p
               .form-check.mb-1

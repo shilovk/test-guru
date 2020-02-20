@@ -1,2 +1,18 @@
-h1 Badges#index
-p Find me in app/views/badges/index.html.slim
+.row
+  .col
+    - if @badges.present?
+      h1= t('.header')
+
+      table.table.table-sm.table-secondary
+        thead.thead-light
+          tr
+            th scope="col"= Badge.human_attribute_name(:title)
+            th scope="col"= BadgeUser.human_attribute_name(:received_count)
+            th scope="col"= Badge.human_attribute_name(:image)
+            th scope="col"= Badge.human_attribute_name(:category)
+            th scope="col"= Badge.human_attribute_name(:test_level_type)
+            th scope="col"= Badge.human_attribute_name(:is_first_try)
+            th scope="col" colspan="1"= t('.actions')
+        tbody= render @badges
+    - else
+     .alert.alert-warning role="alert"= t('.not_records')

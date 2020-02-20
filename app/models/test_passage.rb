@@ -6,8 +6,8 @@ class TestPassage < ApplicationRecord
   belongs_to :current_question, class_name: 'Question', optional: true
 
   scope :passed, -> { where(passed: true) }
-  scope :find_with_category_title, ->(title) { joins(:category).where(categories: { title: title }).order(title: :desc) }
-  scope :find_with_test_level, ->(level) { joins(:test).where(tests: { level: level }).order(title: :desc) }
+  scope :find_with_test_category_title, ->(title) { joins(:test).where(test: Test.find_with_category_title(title)) }
+  scope :find_with_test_level_type, ->(level_type) { joins(:test).where(tests: { level: Test.level_range_of(level_type) }) }
 
   before_validation :before_validation_set_current_question
   before_save :save_result, if: :completed?

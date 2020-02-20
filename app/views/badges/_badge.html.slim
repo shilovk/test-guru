@@ -1,16 +1,10 @@
 tr
   th scope='row' class='align-middle'= badge.title
+  td=  current_user.badge_users.find_by(badge: badge).received_count
   td= link_to image_tag(badge.image.variant(resize_to_limit: [30, 30])), url_for(badge.image), target: '_blank', title: 'Preview' if badge.image.attached?
   td= badge.category.title if badge.category
   td= badge.test_level_type
   td= badge.is_first_try
   td= link_to t('links.show'),
-              admin_badge_path(badge),
+              badge_path(badge),
               class: 'btn btn-outline-info btn-sm'
-  td= link_to t('links.edit'),
-              edit_admin_badge_path(badge),
-              class: 'btn btn-outline-primary btn-sm'
-  td= link_to t('links.delete.title'),
-              admin_badge_path(badge),
-              method: :delete,
-              data: { confirm: t('links.delete.confirm') }, class: 'btn btn-outline-danger btn-sm'

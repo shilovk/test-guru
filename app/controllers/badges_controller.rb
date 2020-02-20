@@ -1,11 +1,17 @@
 # frozen_string_literal: true
 
 class BadgesController < ApplicationController
-  def index
-    @badges = Badge.all
-  end
+  before_action :set_badges
+
+  def index; end
 
   def show
-    @badge = Badge.find(params[:id])
+    @badge = @badges.find(params[:id])
+  end
+
+  private
+
+  def set_badges
+    @badges = current_user.badges
   end
 end

@@ -1,2 +1,30 @@
-h1 Badges#show
-p Find me in app/views/badges/show.html.slim
+.row.justify-content-center
+  .col.col-md-4
+    h2 Badge
+
+    p
+      = Badge.human_attribute_name(:title)
+      br= @badge.title
+
+    p
+      = BadgeUser.human_attribute_name(:received_count)
+      br= current_user.badge_users.find_by(badge: @badge).received_count
+
+    p
+      = Badge.human_attribute_name(:image)
+      br= link_to image_tag(@badge.image.variant(resize_to_limit: [100, 100])), url_for(@badge.image), target: '_blank', title: 'Preview' if @badge.image.attached?
+
+    p
+      = Badge.human_attribute_name(:category)
+      br= @badge.category.title if @badge.category
+
+    p
+      = Badge.human_attribute_name(:test_level_type)
+      br= @badge.test_level_type
+
+    p
+      = Badge.human_attribute_name(:is_first_try)
+      br= @badge.is_first_try
+
+    p
+      = link_to 'Back', admin_badges_path, class: 'btn btn-outline-info btn-sm'
