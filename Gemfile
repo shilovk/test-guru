@@ -33,8 +33,6 @@ gem 'rails-i18n', '~> 6.0.0'
 
 gem 'slim-rails', '~> 3.2.0'
 
-gem 'image_processing', '~> 1.2'
-
 # UI
 
 gem 'bootstrap', '~> 4.4.1'

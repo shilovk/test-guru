@@ -3,6 +3,7 @@
 # Admin::BadgesController < Admin::BaseController
 class Admin::BadgesController < Admin::BaseController
   before_action :set_badge, only: %i[show edit update destroy]
+  before_action :purge, only: %i[update destroy]
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
     rescue_with_badge_not_found(exception.id)
