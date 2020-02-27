@@ -7,11 +7,10 @@
         thead.thead-light
           tr
             th scope="col"= Badge.human_attribute_name(:title)
-            th scope="col"= BadgeUser.human_attribute_name(:received_count)
             th scope="col"= Badge.human_attribute_name(:image)
-            th scope="col"= Badge.human_attribute_name(:category)
-            th scope="col"= Badge.human_attribute_name(:test_level_type)
-            th scope="col"= Badge.human_attribute_name(:is_first_try)
+            th scope="col"= Badge.human_attribute_name(:rule_name)
+            th scope="col"= Badge.human_attribute_name(:rule_value)
+            th scope="col"= Badge.human_attribute_name(:count)
             th scope="col" colspan="1"= t('.actions')
         tbody= render @badges
     - else

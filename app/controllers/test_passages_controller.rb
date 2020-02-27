@@ -8,7 +8,7 @@ class TestPassagesController < ApplicationController
   def update
     @test_passage.accept!(params[:answer_ids])
     if @test_passage.completed?
-      Badge.awardings(@test_passage)
+      current_user.badges << BadgeService.new(@test_passage).badges
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_test_passage_path(@test_passage)
     else

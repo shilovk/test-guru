@@ -5,6 +5,4 @@ class BadgeUser < ApplicationRecord
 
   belongs_to :badge
   belongs_to :user
-
-  validates :received_count, numericality: { only_integer: true, greater_than: -1 }
 end

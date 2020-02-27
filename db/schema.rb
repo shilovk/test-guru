@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_20_172645) do
+ActiveRecord::Schema.define(version: 2020_02_27_091450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,8 +48,9 @@ ActiveRecord::Schema.define(version: 2020_02_20_172645) do
   create_table "badge_users", force: :cascade do |t|
     t.bigint "badge_id"
     t.bigint "user_id"
-    t.integer "received_count", default: 0
-    t.index ["badge_id", "user_id"], name: "index_badge_users_on_badge_id_and_user_id", unique: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["badge_id", "user_id"], name: "index_badge_users_on_badge_id_and_user_id"
     t.index ["badge_id"], name: "index_badge_users_on_badge_id"
     t.index ["user_id"], name: "index_badge_users_on_user_id"
   end
@@ -58,11 +59,9 @@ ActiveRecord::Schema.define(version: 2020_02_20_172645) do
     t.string "title", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "category_id"
-    t.string "test_level_type"
-    t.boolean "is_first_try", default: false, null: false
-    t.index ["category_id", "test_level_type", "is_first_try"], name: "index_badges_conditions_unique", unique: true
-    t.index ["category_id"], name: "index_badges_on_category_id"
+    t.string "rule_name", default: "", null: false
+    t.string "rule_value", default: "", null: false
+    t.index ["rule_name"], name: "index_badges_on_rule_name"
     t.index ["title"], name: "index_badges_on_title", unique: true
   end
 

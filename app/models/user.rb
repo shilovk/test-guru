@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :gists, dependent: :destroy
 
   has_many :badge_users
-  has_many :badges, through: :badge_users, class_name: 'Badge', foreign_key: :user_id
+  has_many :badges, through: :badge_users
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, and :omniauthable
@@ -29,12 +29,5 @@ class User < ApplicationRecord
 
   def admin?
     @admin = is_a?(Admin)
-  end
-
-  def add_badge(badge)
-    badges.push(badge) unless badges.include?(badge)
-    badge_user = badge_users.find_by(badge: badge)
-    badge_user.received_count += 1
-    badge_user.save
   end
 end

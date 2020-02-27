@@ -11,6 +11,11 @@
               = form.text_field :title, id: :badge_title, class: 'form-control'
 
             p
+              = label_tag 'Select rule name and value'
+              br= form.select :rule_name, BadgeService.rules, prompt: 'select name', id: :badge_rule_name, class: 'form-control'
+              = form.select :rule_value, BadgeService.values_of_rule(BadgeService.rules.first), prompt: 'select value', id: :badge_rule_value, class: 'form-control'
+
+            p
               = form.label :image
               = form.file_field :image, class: 'form-control'
               - if @badge.image.attached?
@@ -18,19 +23,6 @@
                 .form-check.mb-1
                   = check_box_tag :purge, class: 'form-check-input'
                   = label_tag :purge, 'delete', class: 'form-check-label'
-
-            p
-              = form.label :category
-              = form.collection_select :category_id, Category.all, :id, :title, include_blank: true, id:  :badge_category_id, class: 'form-control'
-
-            p
-              = form.label :test_level_type
-              = form.select :test_level_type, Test::LEVEL_TYPES, include_blank: true, id: :badge_test_level_type, class: 'form-control'
-
-            p
-              .form-check.mb-1
-                = form.check_box :is_first_try, class: 'form-check-input'
-                = form.label :is_first_try, class: 'form-check-label'
 
             p= form.submit 'Save', class: 'btn btn-primary'
 

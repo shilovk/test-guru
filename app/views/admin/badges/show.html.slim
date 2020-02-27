@@ -11,16 +11,20 @@
       br= link_to image_tag(@badge.image.variant(resize_to_limit: [100, 100])), url_for(@badge.image), target: '_blank', title: 'Preview' if @badge.image.attached?
 
     p
-      = Badge.human_attribute_name(:category)
-      br= @badge.category.title if @badge.category
+      = Badge.human_attribute_name(:rule_name)
+      br= @badge.rule_name
 
     p
-      = Badge.human_attribute_name(:test_level_type)
-      br= @badge.test_level_type
+      = Badge.human_attribute_name(:rule_value)
+      br= @badge.rule_value
 
     p
-      = Badge.human_attribute_name(:is_first_try)
-      br= @badge.is_first_try
+      = Badge.human_attribute_name(:count)
+      br= current_user.badges.where(id: badge.id).count
+
+    p
+      = link_to 'Back', admin_badges_path, class: 'btn btn-outline-info btn-sm'
+
 
     p
       = link_to 'Back', admin_badges_path, class: 'btn btn-outline-info btn-sm'
