@@ -20,7 +20,7 @@
 
     p
       = Badge.human_attribute_name(:count)
-      br= current_user.badges.where(id: badge.id).count
+      br= current_user.badges.where(id: @badge.id).count
 
     p
-      = link_to 'Back', admin_badges_path, class: 'btn btn-outline-info btn-sm'
+      = link_to 'Back', badges_path, class: 'btn btn-outline-info btn-sm'
