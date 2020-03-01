@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Test < ApplicationRecord
-  LEVEL_TYPES = %i[easy normal hard hero].freeze
+  LEVEL_TYPES = %w[easy normal hard hero].freeze
   LEVEL_RANGES = [0..1, 2..4, 5..5, 6..Float::INFINITY].freeze
 
   default_scope { order(created_at: :asc) }
@@ -33,7 +33,7 @@ class Test < ApplicationRecord
   end
 
   def self.level_range_of(level_type)
-    levels[level_type.to_sym]
+    levels[level_type]
   end
 
   def level_type

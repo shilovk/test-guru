@@ -44,7 +44,7 @@ class BadgeService
   private
 
   def award?(badge)
-    send badge.rule_name.to_sym, badge
+    send badge.rule_name, badge
   end
 
   def tests_of_category(badge)
@@ -52,7 +52,7 @@ class BadgeService
     return false if @test.category.title != badge.rule_value
     return false if @user.badges.include? badge
 
-    @tests_passed.find_with_test_category_title(badge.rule_value).uniq.count == Test.find_with_category_title(badge.rule_value).count
+    @tests_passed.find_with_test_category_title(badge.rule_value).pluck(:test_id, :user_id).uniq.count == Test.find_with_category_title(badge.rule_value).count
   end
 
   def tests_of_level(badge)
@@ -60,7 +60,7 @@ class BadgeService
     return false if @test.level_type != badge.rule_value
     return false if @user.badges.include? badge
 
-    @tests_passed.find_with_test_level_type(badge.rule_value).uniq.count == Test.send(badge.rule_value).count
+    @tests_passed.find_with_test_level_type(badge.rule_value).pluck(:test_id, :user_id).uniq.count == Test.send(badge.rule_value).count
   end
 
   def test_of_try(badge)
