@@ -1,7 +1,7 @@
 tr
   th scope='row' class='align-middle'= badge.title
   td= link_to image_tag(badge.image.variant(resize_to_limit: [30, 30])), url_for(badge.image), target: '_blank', title: 'Preview' if badge.image.attached?
-  td= badge.rule_name
+  td= I18n.t("helpers.badge_rule_names.#{badge.rule_name}")
   td= badge.rule_value
   td= current_user.badges.where(id: badge.id).count
   td= link_to t('links.show'),
