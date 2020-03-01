@@ -11,10 +11,12 @@
               = form.text_field :title, id: :badge_title, class: 'form-control'
 
             p
-              = label_tag 'Select rule name and value'
-              br= form.select :rule_name, BadgeService.rules, prompt: 'select name', id: :badge_rule_name, class: 'form-control'
+              = form.label :rule_name
+              = form.select :rule_name, badge_rule_names, { prompt: true, id: :badge_rule_name }, { class: 'form-control' }
 
-              = form.select :rule_value, grouped_options_for_select(BadgeService::RULES, @badge.rule_value), prompt: 'select value', id: :badge_rule_value, class: 'form-control'
+            p
+              = form.label :rule_value
+              = form.select :rule_value, grouped_options_for_select(badge_rule_values, @badge.rule_value), { prompt: true, id: :badge_rule_value }, { class: 'form-control' }
 
             p
               = form.label :image

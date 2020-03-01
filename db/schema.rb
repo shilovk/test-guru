@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_27_091450) do
+ActiveRecord::Schema.define(version: 2020_03_01_115741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_091450) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "rule_name", default: "", null: false
     t.string "rule_value", default: "", null: false
+    t.index ["rule_name", "rule_value"], name: "index_badges_on_rule_name_and_rule_value", unique: true
     t.index ["rule_name"], name: "index_badges_on_rule_name"
     t.index ["title"], name: "index_badges_on_title", unique: true
   end
