@@ -2,8 +2,8 @@
   .col
     h2= "Passing the #{@test_passage.test.title} Test"
 
-    h3= count_down_timer(@test_passage.test.timer_seconds)
-    
+    = count_down_timer(@test_passage.test.timer_seconds) unless @test_passage.test.timer_seconds.zero?
+
     p= question_numbers(@test_passage)
 
     p= progress_bar(@test_passage.progress)

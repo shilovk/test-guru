@@ -56,8 +56,9 @@ class TestPassage < ApplicationRecord
   end
 
   def timer_over?
-    started_time = created_at || Time.current
-    Time.current - started_time > test.timer_seconds
+    return false if test.timer_seconds.zero?
+
+    Time.current - (created_at || Time.current) > test.timer_seconds
   end
 
   def correct_answer?(answer_ids)
