@@ -49,6 +49,10 @@ class TestPassage < ApplicationRecord
     current_question_number * 100 / questions_count
   end
 
+  def time_left
+    10.seconds - (Time.current - (created_at || Time.current)).seconds
+  end
+
   private
 
   def before_validation_set_current_question
@@ -58,7 +62,7 @@ class TestPassage < ApplicationRecord
   def timer_over?
     return false if test.timer_seconds.zero?
 
-    Time.current - (created_at || Time.current) > test.timer_seconds
+    time_left <= 0
   end
 
   def correct_answer?(answer_ids)
