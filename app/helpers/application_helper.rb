@@ -48,4 +48,17 @@ module ApplicationHelper
       end
     end
   end
+
+  def count_timer(value = 1, timer_class = 'count-timer', timer_id = 'count-timer')
+    content_tag(
+      :p,
+      class: timer_class,
+      id: timer_id,
+      data:
+      { time: (Time.current + value.to_i.minutes).to_f * 1000,
+        expired: I18n.t('count_timer.expired')
+      }
+    ) do
+    end
+  end
 end
