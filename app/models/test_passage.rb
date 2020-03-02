@@ -18,7 +18,7 @@ class TestPassage < ApplicationRecord
   end
 
   def completed?
-    current_question.nil? || timer_over?
+    current_question.nil? || time_over?
   end
 
   def questions_count
@@ -59,7 +59,7 @@ class TestPassage < ApplicationRecord
     self.current_question = next_question if test.present?
   end
 
-  def timer_over?
+  def time_over?
     return false if test.timer_seconds.zero?
 
     time_left <= 0
