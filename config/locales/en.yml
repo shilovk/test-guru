@@ -3,9 +3,9 @@ en:
 
   helpers:
     badge_rule_names:
-      tests_of_category: 'Passed all tests of categrory'
-      tests_of_level: 'Passed all tests of level'
-      test_of_try: 'Passed test by try'
+      tests_of_category: "Passed all tests of categrory"
+      tests_of_level: "Passed all tests of level"
+      test_of_try: "Passed test by try"
     submit:
       test:
         create: "Create Test"
@@ -17,6 +17,8 @@ en:
         category_id: "Category"
     select:
       prompt: "Select"
+    count_timer:
+      expired: "Expired"
 
   shared:
     errors:
@@ -25,16 +27,16 @@ en:
         other: "%{count} errors detected"
 
   links:
-    back: 'Back'
-    show: 'Show'
-    edit: 'Edit'
+    back: "Back"
+    show: "Show"
+    edit: "Edit"
     delete:
-        title: 'Delete'
-        confirm: 'Are you sure?'
+        title: "Delete"
+        confirm: "Are you sure?"
 
   tests:
     test:
-      start: 'Start'
+      start: "Start"
     index:
       header: "Available Tests"
       actions: "Actions"

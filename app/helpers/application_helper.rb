@@ -56,7 +56,7 @@ module ApplicationHelper
       id: timer_id,
       data:
       { time: (Time.current + value.to_i.minutes).to_f * 1000,
-        expired: I18n.t('count_timer.expired')
+        expired: I18n.t('helpers.count_timer.expired')
       }
     ) do
     end
