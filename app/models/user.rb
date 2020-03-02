@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :created_tests, class_name: 'Test', inverse_of: :author, foreign_key: 'author_id', dependent: :nullify
   has_many :gists, dependent: :destroy
 
+  has_many :badge_users, dependent: :destroy
+  has_many :badges, through: :badge_users
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, and :omniauthable
   devise :database_authenticatable,
@@ -27,5 +30,4 @@ class User < ApplicationRecord
   def admin?
     @admin = is_a?(Admin)
   end
-
 end

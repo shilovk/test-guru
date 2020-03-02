@@ -2,10 +2,12 @@
   .col.col-md-4
     h2= t('.feedback')
 
-    .card.border-primary
-      .card-body.row
-        .form-group.p-3
-          = form_with model: @feedback, url: feedback_index_path(@feedback), local: true, method: :post do |f|
+    = form_with model: @feedback, url: feedback_index_path, local: true do |f|
+      = render 'shared/errors', resource: @feedback
+
+      .card.border-primary
+        .card-body.row
+          .form-group.p-3
             p
               = f.label :body
               = f.text_area :body, autofocus: true, class: 'form-control'
@@ -26,4 +28,4 @@
               = f.label :phone
               = f.text_field :phone, class: 'form-control'
 
-            = f.submit 'Send', class: 'btn btn-primary'
+            p= f.submit 'Send', class: 'btn btn-primary'

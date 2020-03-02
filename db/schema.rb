@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_08_105903) do
+ActiveRecord::Schema.define(version: 2020_03_01_115741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "answers", force: :cascade do |t|
     t.text "body", null: false
@@ -22,6 +43,27 @@ ActiveRecord::Schema.define(version: 2020_02_08_105903) do
     t.boolean "correct", default: false, null: false
     t.bigint "question_id", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "badge_users", force: :cascade do |t|
+    t.bigint "badge_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["badge_id", "user_id"], name: "index_badge_users_on_badge_id_and_user_id"
+    t.index ["badge_id"], name: "index_badge_users_on_badge_id"
+    t.index ["user_id"], name: "index_badge_users_on_user_id"
+  end
+
+  create_table "badges", force: :cascade do |t|
+    t.string "title", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "rule_name", default: "", null: false
+    t.string "rule_value", default: "", null: false
+    t.index ["rule_name", "rule_value"], name: "index_badges_on_rule_name_and_rule_value", unique: true
+    t.index ["rule_name"], name: "index_badges_on_rule_name"
+    t.index ["title"], name: "index_badges_on_title", unique: true
   end
 
   create_table "categories", force: :cascade do |t|
@@ -41,6 +83,15 @@ ActiveRecord::Schema.define(version: 2020_02_08_105903) do
     t.index ["user_id"], name: "index_gists_on_user_id"
   end
 
+  create_table "pictures", force: :cascade do |t|
+    t.string "name"
+    t.string "imageable_type", null: false
+    t.bigint "imageable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -56,7 +107,9 @@ ActiveRecord::Schema.define(version: 2020_02_08_105903) do
     t.integer "correct_questions", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "passed", default: false, null: false
     t.index ["current_question_id"], name: "index_test_passages_on_current_question_id"
+    t.index ["passed"], name: "index_test_passages_on_passed"
     t.index ["test_id"], name: "index_test_passages_on_test_id"
     t.index ["user_id"], name: "index_test_passages_on_user_id"
   end
@@ -100,7 +153,10 @@ ActiveRecord::Schema.define(version: 2020_02_08_105903) do
     t.index ["type"], name: "index_users_on_type"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "questions"
+  add_foreign_key "badge_users", "badges"
+  add_foreign_key "badge_users", "users"
   add_foreign_key "gists", "questions"
   add_foreign_key "gists", "users"
   add_foreign_key "questions", "tests"

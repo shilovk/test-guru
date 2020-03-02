@@ -2,6 +2,10 @@ en:
   hello: "Hello world"
 
   helpers:
+    badge_rule_names:
+      tests_of_category: 'Passed all tests of categrory'
+      tests_of_level: 'Passed all tests of level'
+      test_of_try: 'Passed test by try'
     submit:
       test:
         create: "Create Test"

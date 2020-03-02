@@ -1,0 +1,20 @@
+.row
+  .col
+    p= link_to t('.new'), new_admin_badge_path
+
+    - if @badges.present?
+      h1= t('.header')
+
+      p= render 'shared/errors', resource: @badge
+
+      table.table.table-sm.table-secondary
+        thead.thead-light
+          tr
+            th scope="col"= Badge.human_attribute_name(:title)
+            th scope="col"= Badge.human_attribute_name(:image)
+            th scope="col"= Badge.human_attribute_name(:rule_name)
+            th scope="col"= Badge.human_attribute_name(:rule_value)
+            th scope="col" colspan="3"= t('.actions')
+        tbody= render @badges
+    - else
+     .alert.alert-warning role="alert"= t('.not_records')

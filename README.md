@@ -4,6 +4,8 @@ List of entities (real-world objects) for the TestGuru project:
 
 * User
 
+* Category
+
 * Test
 
 * Question
@@ -11,3 +13,11 @@ List of entities (real-world objects) for the TestGuru project:
 * Answer
 
 * TestPassage
+
+* Gist
+
+* Picture
+
+* Badge
+
+* BadgeUser

@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'badges/index'
+  get 'badges/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root to: 'tests#index'
 
   devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }
+
+  resources :badges, only: %i[index show]
 
   resources :feedback, only: %i[new create]
 
@@ -20,9 +24,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :gists
-
   namespace :admin do
+    resources :badges
+
+    resources :gists, only: :index
+
     resources :tests do
       patch :update_inline, on: :member
 
@@ -30,7 +36,5 @@ Rails.application.routes.draw do
         resources :answers, shallow: true, except: :index
       end
     end
-
-    resources :gists
   end
 end

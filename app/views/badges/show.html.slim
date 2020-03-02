@@ -1,0 +1,26 @@
+.row.justify-content-center
+  .col.col-md-4
+    h2 Badge
+
+    p
+      = Badge.human_attribute_name(:title)
+      br= @badge.title
+
+    p
+      = Badge.human_attribute_name(:image)
+      br= link_to image_tag(@badge.image.variant(resize_to_limit: [100, 100])), url_for(@badge.image), target: '_blank', title: 'Preview' if @badge.image.attached?
+
+    p
+      = Badge.human_attribute_name(:rule_name)
+      br= I18n.t("helpers.badge_rule_names.#{@badge.rule_name}")
+
+    p
+      = Badge.human_attribute_name(:rule_value)
+      br= @badge.rule_value
+
+    p
+      = Badge.human_attribute_name(:count)
+      br= current_user.badges.where(id: @badge.id).count
+
+    p
+      = link_to 'Back', badges_path, class: 'btn btn-outline-info btn-sm'

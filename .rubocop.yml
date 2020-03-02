@@ -89,14 +89,17 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Max: 15
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 Style/ClassVars:
+  Enabled: false
+
+Style/GlobalVars:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: true
 
-Style/GlobalVars:
-  Enabled: false
-
-Style/ClassAndModuleChildren:
+Style/StringLiterals:
   Enabled: false

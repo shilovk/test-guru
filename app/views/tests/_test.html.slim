@@ -1,6 +1,6 @@
 tr
   th= test.title
-  td= test_level(test)
+  td= test.level_type
   td= test.category.title
   td= test.questions.count
   td= button_to t('.start'), start_test_path(test), class: 'btn btn-outline-primary btn-sm'

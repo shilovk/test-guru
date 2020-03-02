@@ -1,0 +1,17 @@
+.row
+  .col
+    - if @badges.present?
+      h1= t('.header')
+
+      table.table.table-sm.table-secondary
+        thead.thead-light
+          tr
+            th scope="col"= Badge.human_attribute_name(:title)
+            th scope="col"= Badge.human_attribute_name(:image)
+            th scope="col"= Badge.human_attribute_name(:rule_name)
+            th scope="col"= Badge.human_attribute_name(:rule_value)
+            th scope="col"= Badge.human_attribute_name(:count)
+            th scope="col" colspan="1"= t('.actions')
+        tbody= render @badges_uniq
+    - else
+     .alert.alert-warning role="alert"= t('.not_records')

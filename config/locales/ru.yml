@@ -2,6 +2,10 @@ ru:
   hello: "Привет мир"
 
   helpers:
+    badge_rule_names:
+      tests_of_category: 'Прохождение всех тестов категории'
+      tests_of_level: 'Прохождение всех тестов уровня сложности'
+      test_of_try: 'Прохождение теста с попытки'
     submit:
       test:
         create: "Создать тест"
