@@ -50,7 +50,7 @@ class TestPassage < ApplicationRecord
   end
 
   def time_left
-    10.seconds - (Time.current - (created_at || Time.current)).seconds
+    test.timer_seconds - (Time.current - (created_at || Time.current)).seconds
   end
 
   private
