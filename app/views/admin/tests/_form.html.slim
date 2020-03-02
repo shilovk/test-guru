@@ -16,8 +16,8 @@
           = form.collection_select :category_id, Category.all, :id, :title, { prompt: true, id:  :test_category_id }, { class: 'form-control' }
 
         p
-          = form.label :timer_seconds
-          = form.number_field :timer_seconds, id: :test_timer_value, class: 'form-control'
+          = form.label :timer_value
+          br= form.time_select :timer_value, include_seconds: true, id: :test_timer_value, class: 'form-control'
 
         p= form.submit class: 'btn btn-primary'
 

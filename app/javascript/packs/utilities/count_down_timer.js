@@ -16,15 +16,12 @@ document.addEventListener("turbolinks:load", () => {
     var distance = countDownDate - now
 
     // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24))
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
     var seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
     // Output the result in an element with id="demo"
-    if (days > 0) {
-      countDownTimer.innerHTML =  days + ':' +  hours + ':' + minutes + ':' + seconds
-    } else if (hours > 0) {
+    if (hours > 0) {
       countDownTimer.innerHTML =  hours + ':' + minutes + ':' + seconds
     } else if (minutes > 0) {
       countDownTimer.innerHTML =  minutes + ':' + seconds
