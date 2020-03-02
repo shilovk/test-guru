@@ -18,7 +18,7 @@ class TestPassage < ApplicationRecord
   end
 
   def completed?
-    current_question.nil?
+    current_question.nil? || timer_over?
   end
 
   def questions_count
@@ -53,6 +53,11 @@ class TestPassage < ApplicationRecord
 
   def before_validation_set_current_question
     self.current_question = next_question if test.present?
+  end
+
+  def timer_over?
+    started_time = created_at || Time.current
+    Time.current - started_time > test.timer_seconds
   end
 
   def correct_answer?(answer_ids)

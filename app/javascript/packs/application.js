@@ -21,7 +21,7 @@ import "../src/application";
 
 import "./bootstrap_custom";
 require("./utilities/confirm");
+require("./utilities/count_down_timer");
 require("./utilities/form_inline");
 require("./utilities/sorting");
-require("./utilities/count_timer");
 require("./utilities/sorting");

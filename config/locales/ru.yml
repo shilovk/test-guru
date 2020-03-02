@@ -17,7 +17,7 @@ ru:
         category_id: "Категория"
     select:
       prompt: "Выберите"
-    count_timer:
+    count_down_timer:
       expired: "Закончилось"
 
   shared:
@@ -33,8 +33,8 @@ ru:
     show: "Просмотр"
     edit: "Редактировать"
     delete:
-        title: "Удалить"
-        confirm: "Вы уверены?"
+      title: "Удалить"
+      confirm: "Вы уверены?"
 
   tests:
     test:

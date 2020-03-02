@@ -17,7 +17,7 @@ en:
         category_id: "Category"
     select:
       prompt: "Select"
-    count_timer:
+    count_down_timer:
       expired: "Expired"
 
   shared:
@@ -31,8 +31,8 @@ en:
     show: "Show"
     edit: "Edit"
     delete:
-        title: "Delete"
-        confirm: "Are you sure?"
+      title: "Delete"
+      confirm: "Are you sure?"
 
   tests:
     test:
@@ -41,9 +41,6 @@ en:
       header: "Available Tests"
       actions: "Actions"
       not_records: "Not created Tests"
-
-
-
 
   test_passages:
     result:
