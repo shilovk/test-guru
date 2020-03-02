@@ -12,6 +12,6 @@
             th scope="col"= Badge.human_attribute_name(:rule_value)
             th scope="col"= Badge.human_attribute_name(:count)
             th scope="col" colspan="1"= t('.actions')
-        tbody= render @badges
+        tbody= render @badges_uniq
     - else
      .alert.alert-warning role="alert"= t('.not_records')

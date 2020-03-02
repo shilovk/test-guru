@@ -3,7 +3,9 @@
 class BadgesController < ApplicationController
   before_action :set_badges
 
-  def index; end
+  def index
+    @badges_uniq = @badges.uniq
+  end
 
   def show
     @badge = @badges.find(params[:id])
