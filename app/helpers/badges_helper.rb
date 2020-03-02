@@ -2,14 +2,10 @@
 
 module BadgesHelper
   def badge_rule_names
-    BadgeService.rules.each_with_object([]) do |rule, memo|
-      memo << [I18n.t("helpers.badge_rule_names.#{rule}"), rule]
-    end
+    BadgeService.rules.map { |rule| [I18n.t("helpers.badge_rule_names.#{rule}"), rule] }
   end
 
   def badge_rule_values
-    badge_rule_names.each_with_object({}) do |(trule, rule), memo|
-      memo[trule] = BadgeService.values_of_rule(rule)
-    end
+    badge_rule_names.map { |trule, rule| [trule, BadgeService.values_of_rule(rule)] }
   end
 end

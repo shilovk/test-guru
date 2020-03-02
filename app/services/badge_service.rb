@@ -36,9 +36,7 @@ class BadgeService
   end
 
   def badges
-    Badge.all.each_with_object([]) do |badge, badges|
-      badges << badge if award?(badge)
-    end
+    Badge.all.select { |badge| award?(badge) }
   end
 
   private
@@ -50,17 +48,19 @@ class BadgeService
   def tests_of_category(badge)
     return false if @test_passed == false
     return false if @test.category.title != badge.rule_value
-    return false if @user.badges.include? badge
 
-    @tests_passed.find_with_test_category_title(badge.rule_value).pluck(:test_id, :user_id).uniq.count == Test.find_with_category_title(badge.rule_value).count
+    count_of_passed(@tests_passed.find_with_test_category_title(badge.rule_value), Test.find_with_category_title(badge.rule_value))
   end
 
   def tests_of_level(badge)
     return false if @test_passed == false
     return false if @test.level_type != badge.rule_value
-    return false if @user.badges.include? badge
 
-    @tests_passed.find_with_test_level_type(badge.rule_value).pluck(:test_id, :user_id).uniq.count == Test.send(badge.rule_value).count
+    count_of_passed(@tests_passed.find_with_test_level_type(badge.rule_value), Test.send(badge.rule_value))
+  end
+
+  def count_of_passed(test_passed, tests)
+    (test_passed.pluck(:test_id, :user_id).uniq.count % tests.count).zero?
   end
 
   def test_of_try(badge)
