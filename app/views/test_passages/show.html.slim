@@ -3,7 +3,7 @@
     h2= "Passing the #{@test_passage.test.title} Test"
 
     - unless  @test_passage.test.timer_seconds == 0
-      h3= count_down_timer(@test_passage.time_left)
+      h3= count_down_timer(TimerService.new(@test_passage).time_left)
 
     p= question_numbers(@test_passage)
 
