@@ -2,22 +2,22 @@
   = render 'shared/errors', resource: @test
   .card.border-primary
     .card-body.row
-      .form-group
+      .form-group.p-2
         p
           = form.label :title
           = form.text_field :title, id: :test_title, class: 'form-control'
 
-        p
-          = form.label :level
-          = form.number_field :level, id: :test_level, class: 'form-control'
+        p.form-inline
+          = form.label :level, class: 'pr-2'
+          = form.number_field :level, id: :test_level, class: 'form-control col-md-3'
 
         p
           = form.label :category_id
           = form.collection_select :category_id, Category.all, :id, :title, { prompt: true, id:  :test_category_id }, { class: 'form-control' }
 
-        p
-          = form.label :timer_value
-          br= form.time_select :timer_value, include_seconds: true, id: :test_timer_value, class: 'form-control'
+        p.form-inline
+          = form.label :timer_value, class: 'pr-2'
+          = form.time_select :timer_value, { include_seconds: true, id: :test_timer_value }, { class: 'form-control' }
 
         p= form.submit class: 'btn btn-primary'
 

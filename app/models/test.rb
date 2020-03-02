@@ -12,7 +12,9 @@ class Test < ApplicationRecord
   belongs_to :category, optional: true
   belongs_to :author, class_name: 'User', inverse_of: :created_tests, optional: true
 
-  validates :title, :category_id, :timer_seconds, presence: true
+  attribute :timer_value, :string, default: ''
+
+  validates :title, :category_id, :timer_seconds, :timer_value, presence: true
   validates :level, numericality: { only_integer: true, greater_than: 0 }
   validates :title, uniqueness: { scope: :level, case_sensitive: false, message: 'with this level is already exists' }
 
@@ -44,7 +46,7 @@ class Test < ApplicationRecord
     Time.at(timer_seconds || 0).utc
   end
 
-  def timer_value=(time_hash)
+  def timer_value=(time_hash = {})
     self.timer_seconds = Time.parse(time_hash.values.join(':')).seconds_since_midnight
   end
 

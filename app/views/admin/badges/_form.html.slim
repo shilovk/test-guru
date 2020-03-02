@@ -1,32 +1,30 @@
-.row.justify-content-center
-  .col.col-md-6
-    h2= t('.header')
-    = form_with model: [:admin, @badge], local: true do |form|
-      = render 'shared/errors', resource: @badge
-      .card.border-primary
-        .card-body.row
-          .form-group
-            p
-              = form.label :title
-              = form.text_field :title, id: :badge_title, class: 'form-control'
+= form_with model: [:admin, @badge], local: true do |form|
+  = render 'shared/errors', resource: @badge
+  .card.border-primary
+    .card-body.row
+      .form-group
+        p
+          = form.label :title
+          = form.text_field :title, id: :badge_title, class: 'form-control'
 
-            p
-              = form.label :rule_name
-              = form.select :rule_name, badge_rule_names, { prompt: true, id: :badge_rule_name }, { class: 'form-control' }
+        p
+          = form.label :rule_name
+          = form.select :rule_name, badge_rule_names, { prompt: true, id: :badge_rule_name }, { class: 'form-control' }
 
-            p
-              = form.label :rule_value
-              = form.select :rule_value, grouped_options_for_select(badge_rule_values, @badge.rule_value), { prompt: true, id: :badge_rule_value }, { class: 'form-control' }
+        p
+          = form.label :rule_value
+          = form.select :rule_value, grouped_options_for_select(badge_rule_values, @badge.rule_value), { prompt: true, id: :badge_rule_value }, { class: 'form-control' }
 
-            p
-              = form.label :image
-              = form.file_field :image, class: 'form-control'
-              - if @badge.image.attached?
-                = link_to image_tag(@badge.image.variant(resize_to_limit: [100, 100])), rails_blob_path(@badge.image, disposition: "attachment")
-                .form-check.mb-1
-                  = check_box_tag :purge, class: 'form-check-input'
-                  = label_tag :purge, 'delete', class: 'form-check-label'
+        p
+          = form.label :image
+          = form.file_field :image, class: 'form-control-file'
+          - if @badge.image.attached?
+            .form_inline
+              = link_to image_tag(@badge.image.variant(resize_to_limit: [100, 100])), rails_blob_path(@badge.image, disposition: "attachment")
+              .form-check.mb-1
+                = check_box_tag :purge, class: 'form-check-input'
+                = label_tag :purge, 'delete', class: 'form-check-label'
 
-            p= form.submit 'Save', class: 'btn btn-primary'
+        p= form.submit 'Save', class: 'btn btn-primary'
 
-    = link_to t('links.back'), admin_badges_path
+= link_to t('links.back'), admin_badges_path

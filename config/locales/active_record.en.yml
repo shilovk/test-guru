@@ -11,7 +11,8 @@ en:
         level: "Level"
         category_id: "Category"
         question_ids: "Questions"
-        timer_seconds: "Timer"
+        timer_seconds: "Timer in seconds"
+        timer_value: "Timer h:m:s"
         author_id: "Author"
       question:
         body: "Body"
