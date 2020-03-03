@@ -3,7 +3,7 @@
     h2= "Passing the #{@test_passage.test.title} Test"
 
     - unless  @test_passage.test.timer_seconds == 0
-      h3= count_down_timer(TimerService.new(@test_passage).time_left)
+      h3= count_down_timer(@test_passage.time_left)
 
     p= question_numbers(@test_passage)
 
@@ -18,7 +18,7 @@
         = @test_passage.current_question.body
 
       .card-body
-        = form_with url: test_passage_path(@test_passage), local: true, method: :put, include_hidden: false do |form|
+        = form_with url: test_passage_path(@test_passage), local: true, method: :put, include_hidden: false, id: 'count-down-form' do |form|
           .form-group
             = form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b|
               .form-check.mb-2

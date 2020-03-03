@@ -6,16 +6,17 @@ class Test < ApplicationRecord
 
   default_scope { order(created_at: :asc) }
 
+  attribute :timer_value, :string, default: ''
+
   has_many :questions, -> { order(:id) }, dependent: :destroy
   has_many :test_passages, dependent: :destroy
   has_many :users, through: :test_passages
   belongs_to :category, optional: true
   belongs_to :author, class_name: 'User', inverse_of: :created_tests, optional: true
 
-  attribute :timer_value, :string, default: ''
-
   validates :title, :category_id, :timer_seconds, :timer_value, presence: true
   validates :level, numericality: { only_integer: true, greater_than: 0 }
+  validates :timer_seconds, numericality: { only_integer: true, greater_than: -1 }
   validates :title, uniqueness: { scope: :level, case_sensitive: false, message: 'with this level is already exists' }
 
   scope :find_with_category_title, ->(title) { joins(:category).where(categories: { title: title }).order(title: :desc) }
@@ -47,7 +48,7 @@ class Test < ApplicationRecord
   end
 
   def timer_value=(time_hash = {})
-    self.timer_seconds = Time.parse(time_hash.values.join(':')).seconds_since_midnight
+    self.timer_seconds = Time.parse(time_hash.values.join(':')).seconds_since_midnight.to_i
   end
 
   def timer_string
