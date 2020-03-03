@@ -17,6 +17,7 @@
             th scope="col"= Test.human_attribute_name(:level)
             th scope="col"= Test.human_attribute_name(:category_id)
             th scope="col"= Test.human_attribute_name(:question_ids)
+            th scope="col"= Test.human_attribute_name(:timer_seconds)
             th scope="col"= Test.human_attribute_name(:author_id)
             th scope="col" colspan="4"= t('.actions')
         tbody= render @tests

@@ -32,4 +32,14 @@ module TestPassagesHelper
   def line_with(animate)
     animate ? 'progress-bar-striped progress-bar-animated' : ''
   end
+
+  def count_down_timer(timer_seconds = 60, timer_id = 'count-down-timer')
+    content_tag(
+      :p,
+      id: timer_id,
+      data: { timer_seconds: timer_seconds,
+              expired: I18n.t('helpers.count_down_timer.expired') }
+    ) do
+    end
+  end
 end

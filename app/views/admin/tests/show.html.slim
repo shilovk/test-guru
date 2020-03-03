@@ -13,6 +13,10 @@ p
   br= @test.category.title
 
 p
+  = Test.human_attribute_name(:timer_seconds)
+  br= @test.timer_string
+
+p
   = Test.human_attribute_name(:author_id)
   br= @test.author&.email
 

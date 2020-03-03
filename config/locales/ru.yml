@@ -3,9 +3,9 @@ ru:
 
   helpers:
     badge_rule_names:
-      tests_of_category: 'Прохождение всех тестов категории'
-      tests_of_level: 'Прохождение всех тестов уровня сложности'
-      test_of_try: 'Прохождение теста с попытки'
+      tests_of_category: "Прохождение всех тестов категории"
+      tests_of_level: "Прохождение всех тестов уровня сложности"
+      test_of_try: "Прохождение теста с попытки"
     submit:
       test:
         create: "Создать тест"
@@ -17,6 +17,8 @@ ru:
         category_id: "Категория"
     select:
       prompt: "Выберите"
+    count_down_timer:
+      expired: "Закончилось"
 
   shared:
     errors:
@@ -27,16 +29,16 @@ ru:
         other: "Обнаружено %{count} ошибки"
 
   links:
-    back: 'Назад'
-    show: 'Просмотр'
-    edit: 'Редактировать'
+    back: "Назад"
+    show: "Просмотр"
+    edit: "Редактировать"
     delete:
-        title: 'Удалить'
-        confirm: 'Вы уверены?'
+      title: "Удалить"
+      confirm: "Вы уверены?"
 
   tests:
     test:
-      start: 'Старт'
+      start: "Старт"
     index:
       header: "Доступные Тесты"
       actions: "Действия"

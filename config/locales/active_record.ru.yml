@@ -11,6 +11,8 @@ ru:
         level: "Уровень"
         category_id: "Категория"
         question_ids: "Вопросы"
+        timer_seconds: "Таймер в секундах"
+        timer_value: "Таймер ч:м:с"
         author_id: "Автор"
       question:
         body: "Текст"
