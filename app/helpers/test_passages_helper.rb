@@ -38,7 +38,7 @@ module TestPassagesHelper
       :p,
       class: timer_class,
       id: timer_id,
-      data: { timer_date: timer_seconds,
+      data: { timer_seconds: timer_seconds,
               expired: I18n.t('helpers.count_down_timer.expired') }
     ) do
     end

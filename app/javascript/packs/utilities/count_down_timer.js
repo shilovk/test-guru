@@ -3,8 +3,15 @@
 document.addEventListener('turbolinks:load', () => {
   // Set the date we're counting down to
   var countDownTimer = document.getElementById('count-down-timer')
-  var countDownTimerSeconds = parseInt(countDownTimer.dataset.timerDate)
-  var countDownDate = new Date().getTime() + countDownTimerSeconds * 1000
+
+  if (countDownTimer) {
+    var timerSeconds = countDownTimer.dataset.timerSeconds
+    if (timerSeconds) { startTimer(countDownTimer, timerSeconds) }
+  }
+})
+
+function startTimer(countDownTimer, timerSeconds) {
+  var countDownDate = new Date().getTime() + parseInt(timerSeconds) * 1000
 
   // Update the count down every 1 second
   var x = setInterval(function() {
@@ -36,4 +43,4 @@ document.addEventListener('turbolinks:load', () => {
       countDownForm.submit()
     }
   }, 1000)
-})
+}
