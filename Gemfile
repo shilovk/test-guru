@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
 ruby '2.6.5'
 
@@ -32,6 +32,8 @@ gem 'rack', '>= 2.0.8'
 gem 'rails-i18n', '~> 6.0.0'
 
 gem 'slim-rails', '~> 3.2.0'
+
+gem 'nokogiri', '>= 1.10.8'
 
 # UI
 
